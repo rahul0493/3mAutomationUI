@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+.form-group label{
+    font-weight:500;
+}
+
+.deleteBtn,.editBtn,.statusBtn,.resetBtn{
+    text-decoration: none;
+    color:rgb(95, 95, 95)  !important;
+    padding: 7px;
+    }
+table .fa:hover {
+    background-color:rgb(95, 95, 95)  !important;
+    color:white !important;
+    border-radius: 5px;
+    box-shadow: 4px 4px #999;
+    }
+    
+    table .fa:active {
+    background-color: #3e8e41;
+    box-shadow: 2px 2px #666;
+    transform: translateY(2px);
+    }
+    .modal{
+        z-index: 1117 !important;
+      }
+      .btn-default {
+        background-color: #00000038 !important;
+      }
+      /* .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+      }
+      
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+      
+        
+        position: absolute;
+        z-index: 1;
+      }
+      
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      } */
