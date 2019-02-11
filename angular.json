@@ -25,17 +25,20 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/datatables/media/css/jquery.dataTables.min.css",
-              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css", 
               "./node_modules/datatables-buttons/css/buttons.dataTables.css",              
-              "./src/styles.css"
+              "src/styles.css"
               
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",  
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",              
-              "./node_modules/bootbox/bootbox.js",                
-              "./node_modules/datatables/media/js/jquery.dataTables.min.js",
+              "./node_modules/bootbox/bootbox.js", 
+              "./node_modules/datatables/media/js/jquery.dataTables.min.js",               
               "./node_modules/datatables-buttons/js/dataTables.buttons.js"
+              
+              
+              
             ]
           },
           "configurations": {
