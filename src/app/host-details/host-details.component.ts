@@ -20,30 +20,9 @@ btnName:String;
 loading = false;
 hostForm: FormGroup;
   constructor(private router:Router,private hostApi:HostDetailAPIsService, private formBuilder: FormBuilder,) { }
-
-  // openAllPanels(aId) {
-  //   console.log("setAllPanelOpen");
-  //   $(aId + ' .panel-collapse:not(".in")').collapse('show');
-  // }
-  // closeAllPanels(aId) {
-  //   console.log("setAllPanelclose");
-  //   $(aId + ' .panel-collapse.in').collapse('hide');
-  // }
   
   ngOnInit() {
-    // $(".toggle-accordion").on("click", function() {
-    //   var accordionId = $(this).attr("accordion-id"),
-    //     numPanelOpen = $(accordionId + ' .collapse.in').length;
-      
-    //   $(this).toggleClass("active");
   
-    //   if (numPanelOpen == 0) {
-    //     this.openAllPanels(accordionId);
-    //   } else {
-    //     this.closeAllPanels(accordionId);
-    //   }
-    // })
-
     this.evironmentList=[
       {
           "id": 34,

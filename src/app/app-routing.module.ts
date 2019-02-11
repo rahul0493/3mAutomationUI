@@ -13,7 +13,8 @@ const routes: Routes = [
   {"path":'',component:HomeComponent,canActivate: [AuthGaurdService]},
   {"path":'login',component:LoginComponent},
   {"path":'hostDetails',component:HostDetailsComponent},
-  {'path':'newPass',component:NewPasswordComponent},
+  {'path':'newPass/:page',component:NewPasswordComponent},
+  {'path':'changPass/:page',component:NewPasswordComponent},
   {'path':'resetPass',component:ResetPasswordComponent},
   {'path':'dbConn',component:DbConnectionComponent}
 ];
