@@ -7,32 +7,29 @@ import { Observable } from 'rxjs/Observable';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     constructor(private http: Http) { }
-
+    headers:any;
     login(username: string, password: string) {
-      var headers=new Headers();
-      headers.append('Content-Type','application/json');
-        return this.http.post(environment.apiUrl+'/users/authenticate', { username, password })
-        //return this.http.post('http://localhost:3000/api/login', {"email":username,"password": password })
-           .pipe(map(user => {
-                // login successful if there's a jwt token in the response
-                //  const user={ id: 1,
-                //   username: "shobanjp01",
-                //   password: "admin",
-                //   firstName: "Shoban",
-                //   lastName: "Babu",
-                //   token:"valid"
-                // };
-                if (user && user) {
+      //var headers=new Headers();
+     console.log("service");
+        this.headers = new Headers({'Content-Type': 'application/json', Authorization: 'Basic ' + btoa(username+':'+password) });
+    
+      //headers.append('Content-Type','application/json');
+        // return this.http.post(environment.apiUrl+'/users/authenticate', { username, password })
+        return this.http.post('http://localhost:8081/login', {"username":username,"password": password },{headers:this.headers})
+           .pipe(map(user => {                
+                if (user["_body"]!="") {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                   
+                    sessionStorage.setItem('currentUser', user["_body"]);
+                    sessionStorage.setItem('headers',JSON.stringify(this.headers));
+                    //console.log(this.headers);
                 }
-
                 return user;
            }));
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
     }
 }

@@ -1,15 +1,13 @@
+<div></div>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="#">3M Dashboard</a>
         <button class="navbar-toggler" hidden type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav" hidden>
-                <li class="nav-item">
-                        <a class="nav-link home" href="/contact"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-                      </li>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+          <ul class="navbar-nav" *ngIf="navBars">               
                   <li class="nav-item">
-                    <a class="nav-link userName" (click)="profile(id)"><i class="fa fa-user" aria-hidden="true"></i> Shoban Babu JP</a>
+                    <a class="nav-link userName" (click)="profile(id)"><i class="fa fa-user" aria-hidden="true"></i> {{profileName}}</a>
                   </li>
                   <li class="nav-item">                 
                       <a class="nav-link logout"   (click)="logout()" ><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
@@ -47,7 +45,7 @@
         <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
           <i class="fas fa-bars"></i>
         </a>
-        <nav id="sidebar" class="sidebar-wrapper" >
+        <nav id="sidebar" class="sidebar-wrapper" *ngIf="navBars">
           <div class="sidebar-content">
             <div class="sidebar-brand">
               <a >3M Dashboard</a>
