@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import {ProfileServiceService} from './APIs/profile-service.service';
 declare var jquery:any;
 declare const $: any;
 @Component({
@@ -6,9 +8,27 @@ declare const $: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+profileName:String;
+navBars:Boolean;
+  constructor(private ProfileServiceService:ProfileServiceService,private router:Router) { 
+    this.ProfileServiceService.setNameMethodCalled.subscribe((res)=>{
+      if(res==null){      
+      this.navBars=false;
+      }
+      else{
+        this.profileName=res.displayName;
+        this.navBars=true;
+      }
+    });
+    } 
+
   title = 'dashboard3M'; 
+  
   ngOnInit(){
+    this.ProfileServiceService.setName(sessionStorage.getItem('currentUser')); 
+    console.log("appComp");
     $(".sidebar-dropdown > a").click(function() {
       $(".sidebar-submenu").slideUp(200);
       if (
@@ -40,5 +60,11 @@ export class AppComponent {
       $(".page-wrapper").addClass("toggled");
       return false;
     });
+  }
+
+  logout(){
+    sessionStorage.clear();
+    this.ProfileServiceService.setName(sessionStorage.getItem('currentUser'));  
+    this.router.navigate(['login']);
   }
 }

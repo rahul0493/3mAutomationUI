@@ -12,7 +12,7 @@ declare var $ :any;
   styleUrls: ['./host-details.component.css']
 })
 export class HostDetailsComponent implements OnInit {
-hostList=[];
+
 evironmentList=[];
 edit={};
 submitted = false;
@@ -21,85 +21,17 @@ loading = false;
 hostForm: FormGroup;
   constructor(private router:Router,private hostApi:HostDetailAPIsService, private formBuilder: FormBuilder,) { }
   
-  ngOnInit() {
-  
-    this.evironmentList=[
-      {
-          "id": 34,
-          "environment": "QA",
-          "hostDetailBeans": [
-              {
-                  "id": 35,
-                  "environmentId":34,
-                  "node": "node2",
-                  "hostName": "uspngg001a@nggappqa02.mmm.com",
-                  "password": "F1rewallchanges",
-                  "hostDirectory": "/opt/sterling/3M_stuff/node2_test/automation_test/properties/jdbc_customer.properties.in",
-                  "localDirectory": "C:/Users/Rahuly/Desktop/conf/qa/jdbc_customer.properties.in"
-              },
-              {
-                "id": 36,
-                "environmentId":34,
-                "node": "node1",
-                "hostName": "uspngg001a@nggappqa02.mmm.com",
-                "password": "F1rewallchanges",
-                "hostDirectory": "/opt/sterling/3M_stuff/node2_test/automation_test/properties/jdbc_customer.properties.in",
-                "localDirectory": "C:/Users/Rahuly/Desktop/conf/qa/jdbc_customer.properties.in"
-            },
-            {
-              "id": 37,
-              "environmentId":34,
-              "node": "node2",
-              "hostName": "uspngg001a@nggappqa02.mmm.com",
-              "password": "F1rewallchanges",
-              "hostDirectory": "/opt/sterling/3M_stuff/node2_test/automation_test/properties/jdbc_customer.properties.in",
-              "localDirectory": "C:/Users/Rahuly/Desktop/conf/qa/jdbc_customer.properties.in"
-          }
-          ]
-      },
-      {
-        "id": 38,
-        "environment": "Prod",
-        "hostDetailBeans": [
-            {
-                "id": 39,
-                "environmentId":38,
-                "node": "node2",
-                "hostName": "uspngg001a@nggappqa02.mmm.com",
-                "password": "F1rewallchanges",
-                "hostDirectory": "/opt/sterling/3M_stuff/node2_test/automation_test/properties/jdbc_customer.properties.in",
-                "localDirectory": "C:/Users/Rahuly/Desktop/conf/qa/jdbc_customer.properties.in"
-            },
-            {
-              "id": 40,
-              "environmentId":38,
-              "node": "node1",
-              "hostName": "uspngg001a@nggappqa02.mmm.com",
-              "password": "F1rewallchanges",
-              "hostDirectory": "/opt/sterling/3M_stuff/node2_test/automation_test/properties/jdbc_customer.properties.in",
-              "localDirectory": "C:/Users/Rahuly/Desktop/conf/qa/jdbc_customer.properties.in"
-          },
-          {
-            "id": 41,
-            "environmentId":38,
-            "node": "node2",
-            "hostName": "uspngg001a@nggappqa02.mmm.com",
-            "password": "F1rewallchanges",
-            "hostDirectory": "/opt/sterling/3M_stuff/node2_test/automation_test/properties/jdbc_customer.properties.in",
-            "localDirectory": "C:/Users/Rahuly/Desktop/conf/qa/jdbc_customer.properties.in"
-        }
-        ]
-    }
-  ] ;
-    this.hostForm = this.formBuilder.group({
-      environmentName: ['', Validators.required]
+  ngOnInit() {  
+    this.evironmentList=[];
+  //   this.hostForm = this.formBuilder.group({
+  //     environmentName: ['', Validators.required]
       
-  });
-  const arr=[];
-    this.hostList=[];
+  // });
+   
     
-    // this.hostApi.getAllHost()
-    // .subscribe(res=>{    
+     this.hostApi.getEnvironmentList()
+     .subscribe(res=>{   
+       this.evironmentList=res;
     $('table').DataTable().destroy();
       setTimeout(function(){
         $('table').DataTable({
@@ -107,7 +39,7 @@ hostForm: FormGroup;
         }); 
         $('table tr td input[type="text"]').attr('disabled',true);
         }, 50); 
-      // }); 
+       });
   }
  
      
@@ -125,23 +57,31 @@ hostForm: FormGroup;
   }
 
 
-  onCreate(){
-    this.submitted = true;
+  // onCreate(){
+  //   this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.hostForm.invalid) {
-        return;
-    }
-    this.loading = true;
-  }
+  //   // stop here if form is invalid
+  //   if (this.hostForm.invalid) {
+  //       return;
+  //   }
+  //   this.loading = true;
+  // }
 
 
   addEnvironment(){
      this.btnName="Add";    
   }
+  createEnvironment(data){
+    console.log(data);
+    this.hostApi.createEnvironment(data)
+    .subscribe(res=>{
+      this.ngOnInit();
+        bootbox.alert('<label>Created Succesfully</label>');   
+     })
+  }
 
   addNewHost(id,index){   
-    this.evironmentList[index].hostDetailBeans.push({"hostName":"","password":"","hostDirectory":"","localDirectory":"","node":"","environmentId":""});     
+    this.evironmentList[index].hostDetailBeans.push({"hostName":"","password":"","hostDirectory":"","localDirectory":"","node":"","environmentId":"","id":null});     
     $('#hostDetailsTable'+id).DataTable().destroy();   
       setTimeout(function(){
         $('#hostDetailsTable'+id).DataTable({
@@ -154,17 +94,19 @@ hostForm: FormGroup;
   }
 
   createNode(id,data,envId){   
-    if(id==undefined){
+    if(id==null||id==undefined){
       data.environmentId=envId;
-      this.hostApi.createHost(this.edit)
+      console.log(data);
+      this.hostApi.createHost(data)
      .subscribe(res=>{
-       this.ngOnInit();
          bootbox.alert('<label>Created Succesfully</label>');   
+         this.ngOnInit();
       })
     }
     else{
-      this.hostApi.updateHost(this.edit)
+      this.hostApi.createHost(data)
        .subscribe(res=>{
+        bootbox.alert('<label>Updated Succesfully</label>');   
         this.ngOnInit();
        })
     }
@@ -186,7 +128,19 @@ hostForm: FormGroup;
     else{
     bootbox.confirm("<label>Are you sure, you want to delete?</label>",(result)=>{
            if(result==true){          
-            alert(id);                     
+            this.hostApi.deleteHostById(id)
+            .subscribe(res=>{
+              bootbox.alert('<label>Deleted Succesfully</label>'); 
+              this.evironmentList[index].hostDetailBeans.splice(index1,1); 
+      $('#hostDetailsTable'+name).DataTable().destroy();   
+      setTimeout(function(){
+        $('#hostDetailsTable'+name).DataTable({
+          responsive: true                                       
+      });  
+      $('#hostDetailsTable'+name+' #tr .saveBtn').removeAttr('hidden');
+      }, 50);  
+      console.log(this.evironmentList);  
+            })       
          }   
       });  
     }  

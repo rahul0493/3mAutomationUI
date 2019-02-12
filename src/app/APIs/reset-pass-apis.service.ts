@@ -1,40 +1,35 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
+import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-const   headers= new Headers({'Content-Type': 'application/json', Authorization: 'Basic cmFodWx5OkJlaGFwcHlAMDQyNQ== '})
-;
+
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class ResetPassAPIsService {
-
+  headers= new Headers(JSON.parse(sessionStorage.getItem("headers")));
   constructor(private http:Http) { }
   
   getAllConn(){
-    return this.http.get('http://localhost:8081/ResetPassword/getAllConnectionDetails',{headers:headers})
+    return this.http.get(environment.apiUrl+'/ResetPassword/getAllConnectionDetails',{headers:this.headers})
     .map(res=>res.json());
-  }
-  createConn(hostDetail){
-    return this.http.post('http://localhost:8081/ResetPassword/saveConnectionDetails',hostDetail,{headers:headers})
-    .map(res=>res.text);
   }
 
   updateConn(updateDetail){
    
-    return this.http.put('http://localhost:8081/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:headers})
+    return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers})
     .map(res=>res.text);
   }
   
-  getConnById(id){
-    return this.http.get('http://localhost:8081/ResetPassword/getConnectionDetailById/'+id.id,{headers:headers})
-    .map(res=>res.json());
+  resetPassword(data){    
+    return this.http.post(environment.apiUrl+'/ResetPassword/ResetDataBasePassword',data,{headers:this.headers})
+    .map(res=>res.text());
   }
-
-  deleteConnById(id){    
-    let body=JSON.stringify({"id":id});
-    return this.http.delete('http://localhost:8081/ResetPassword/deleteConnectionDetailsById/'+id,{headers:headers})
+  checkStatusById(id){    
+    return this.http.post(environment.apiUrl+'/ResetPassword/checkDbPasswordStatus',id,{headers:this.headers})
     .map(res=>res.text());
   }
 }

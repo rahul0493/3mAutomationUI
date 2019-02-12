@@ -1,42 +1,38 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
-
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import 'rxjs/add/operator/map';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class HostDetailAPIsService {
-
+  headers= new Headers(JSON.parse(sessionStorage.getItem("headers")));
+ 
   constructor(private http:Http) { }
-  getAllHost(){
-    return this.http.get('http://localhost:3000/host/getAllHostDetails')
+
+  getEnvironmentList(){
+    return this.http.get(environment.apiUrl+'/host/getAllHostDetails',{headers:this.headers})
     .map(res=>res.json());
   }
+  
+  createEnvironment(hostDetail){
+    return this.http.post(environment.apiUrl+'/host/save',hostDetail,{headers:this.headers})
+    .map(res=>res.text);
+  }
+  
   createHost(hostDetail){
-    var headers=new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/host/save',hostDetail,{headers:headers})
-    .map(res=>res.json());
+    if(hostDetail.id==null){
+      hostDetail.id=0;
+    }
+    return this.http.put(environment.apiUrl+'/host/updateHostDetailsbyId/'+hostDetail.id,hostDetail,{headers:this.headers})
+    .map(res=>res.text);
   }
 
-  updateHost(updateDetail){
-    var headers=new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/host/save',updateDetail,{headers:headers})
-    .map(res=>res.json());
-  }
-  getHostById(id){
-    var headers=new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/host/save',{id},{headers:headers})
-    .map(res=>res.json());
-  }
-
-  deleteHostById(id){    
-    return this.http.delete('http://localhost:3000/host/getAllHostDetails')
-    .map(res=>res.json());
+  deleteHostById(id){ 
+      return this.http.delete(environment.apiUrl+'/host/deleteHostDetailsbyId/'+id,{headers:this.headers})
+      .map(res=>res.text());  
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
+import {ProfileServiceService} from '../APIs/profile-service.service';
 import { AuthenticationService } from '../auth/authentication.service';
 //import { $ } from 'protractor';
 
@@ -19,16 +19,19 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+
   error = '';
   constructor(
     private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private profileServiceService:ProfileServiceService
   ) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+     //this.sideNav=true;
+      this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required]
     });
@@ -44,6 +47,7 @@ export class LoginComponent implements OnInit {
 get f() { return this.loginForm.controls; }
 
 onSubmit() {
+    console.log("login");
     this.submitted = true;
 
     // stop here if form is invalid
@@ -56,9 +60,16 @@ onSubmit() {
         .pipe(first())
         .subscribe(
             data => {
-              $('.navbar-toggler,.navbar-nav,.sidebar-wrapper').removeAttr('hidden');
-              console.log(localStorage.getItem('currentUser'));
-                this.router.navigate([this.returnUrl]);
+              $('.navbar-toggler,.navbar-nav,.sidebar-wrapper,#sidebar').removeAttr('hidden');
+              this.loading = false;
+              console.log(sessionStorage.getItem('currentUser'));
+              if(sessionStorage.getItem('currentUser')==null){
+                this.error="Invalid User";
+              }
+              else{                
+                this.router.navigate(['']);
+              }     
+              this.profileServiceService.setName(sessionStorage.getItem('currentUser'));   
             },
             error => {
                 this.error = error;

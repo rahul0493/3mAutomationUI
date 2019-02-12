@@ -1,33 +1,41 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbConnectionService {
-
+  headers= new Headers(JSON.parse(sessionStorage.getItem("headers")));
   constructor(private http:Http) { }
-
-  getAllEnvList(){
-    return this.http.get('http://localhost:3000/host/getAllHostDetails')
-    .map(res=>res.json());
-  }
-  getEnvDeatilByEnvId(id){
-    var headers=new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/host/save',{id},{headers:headers})
+    
+  getAllConn(){
+    return this.http.get(environment.apiUrl+'/ResetPassword/getAllConnectionDetails',{headers:this.headers})
     .map(res=>res.json());
   }
 
-  updateEnvDetails(updateDetail){
-    var headers=new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/host/save',updateDetail,{headers:headers})
-    .map(res=>res.json());
+    createConn(hostDetail){
+      return this.http.post(environment.apiUrl+'/ResetPassword/saveConnectionDetails',hostDetail,{headers:this.headers})
+      .map(res=>res.text);
+    }
+  
+    updateConn(updateDetail){
+     
+      return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers})
+      .map(res=>res.text);
+    }
+    
+    getConnById(id){
+      return this.http.get(environment.apiUrl+'/ResetPassword/getConnectionDetailById/'+id.id,{headers:this.headers})
+      .map(res=>res.json());
+    }
+  
+    deleteConnById(id){    
+      let body=JSON.stringify({"id":id});
+      return this.http.delete(environment.apiUrl+'/ResetPassword/deleteConnectionDetailsById/'+id,{headers:this.headers})
+      .map(res=>res.text());
+    }
   }
   
-  deleteConnById(id){    
-    return this.http.delete('http://localhost:3000/host/getAllHostDetails')
-    .map(res=>res.json());
-  }
-}
