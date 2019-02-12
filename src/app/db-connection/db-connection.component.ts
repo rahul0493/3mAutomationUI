@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {ResetPassAPIsService} from '../APIs/reset-pass-apis.service';
+import {DbConnectionService} from '../APIs/db-connection.service';
 import {Router} from '@angular/router';
 
 declare var bootbox:any;
@@ -15,12 +15,12 @@ export class DbConnectionComponent implements OnInit {
   connectionList=[];
   btnName:String;
   edit={};
-  constructor(private router:Router,private resetPassApi:ResetPassAPIsService) { }
+  constructor(private router:Router,private dbConnApi:DbConnectionService) { }
 
   ngOnInit() {
     this.btnName="Add";
-    this.resetPassApi.getAllConn()
-     .subscribe(res=>{ 
+    this.dbConnApi.getAllConn()
+         .subscribe(res=>{ 
       console.log(res);
       this.connectionList=res;
 
@@ -28,15 +28,17 @@ export class DbConnectionComponent implements OnInit {
       setTimeout(function(){
         $('#connDetailsTable').DataTable({
           responsive: true,
-          dom: 'lBfrtip',
-          buttons: [
-            {
-                text: '<i class="fa fa-plus-circle"> Add New</i>',
-                action: ( e, dt, node, config ) =>{                                      
-                    $('#myModal').modal('toggle');                           
-                }
-            }
-        ]
+        //   dom: 'lBfrtip',
+        //   buttons: [
+        //     {
+        //         text: '<i class="fa fa-plus-circle"> Add New</i>',
+        //         action: ( e, dt, node, config ) =>{                                      
+        //             $('#myModal').modal('toggle');   
+        //             this.btnName="Add";
+        //             this.edit={};                        
+        //         }
+        //     }
+        // ]
         });   
         $('.dt-buttons a').removeClass('dt-button').addClass('btn btn-success btn-sm'); 
         $('.dt-buttons').css('padding-left','20px')  ;
@@ -47,12 +49,12 @@ export class DbConnectionComponent implements OnInit {
   }  
   addConnection(){
     this.btnName="Add";
-
+    this.edit={};
   }
 
   editConn(id){
     this.btnName="Update";
-    this.resetPassApi.getConnById(id)
+    this.dbConnApi.getConnById(id)
     .subscribe(res=>{
       this.edit=res;
     })
@@ -61,14 +63,14 @@ export class DbConnectionComponent implements OnInit {
   updateConn(type){
     console.log(this.edit);
     if(type=="Add"){
-    this.resetPassApi.createConn(this.edit)
+    this.dbConnApi.createConn(this.edit)
       .subscribe(res=>{
         this.ngOnInit();
       })
      
     }
     else{
-      this.resetPassApi.updateConn(this.edit)
+      this.dbConnApi.updateConn(this.edit)
       .subscribe(res=>{
         this.ngOnInit();
       })
@@ -89,22 +91,9 @@ export class DbConnectionComponent implements OnInit {
   }
 
   deleteFunction(hosts,id){
-    this.resetPassApi.deleteConnById(id)
+    this.dbConnApi.deleteConnById(id)
           .subscribe(res=>{
-      // if(res.n==1){
-      //   for(var i=0;i<hosts.length;i++){
-      //     if(hosts[i]._id==id){            
-      //       hosts.splice(i,1); 
-      //       $('#hostDetailsTable').DataTable().destroy();
-      //       setTimeout(function(){
-      //         $('#hostDetailsTable').DataTable({
-      //           responsive: true
-      //         });              
-      //         }, 50);               
-      //       bootbox.alert("<label>Deleted Successfully</label>");
-      //     }
-      //   }
-      // }
+
       this.ngOnInit();
     })
   }
