@@ -1,0 +1,25 @@
+.card {
+    transform: translateY(80%);
+    margin:auto;
+    padding:20px;
+    background-color: #0000009c;
+    color:white;
+} 
+.loginPage{
+    background-image: url(http://park.shifting-gears.com/wp-content/uploads/2016/09/3M-Car-Care.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    background-attachment: fixed;
+}
+.btn-primary{
+    color: #fff;
+    background-color: #aaaaaa;
+    border-color: #aaaaaa;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #ee1d23;
+    border-color: #ee1d23;
+}

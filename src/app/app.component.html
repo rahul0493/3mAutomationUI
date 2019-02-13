@@ -1,4 +1,7 @@
-<div></div>
+<div *ngIf="!navBars">
+    <router-outlet></router-outlet>    
+</div>
+<div *ngIf="navBars">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="#">3M Dashboard</a>
         <button class="navbar-toggler" hidden type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -154,5 +157,6 @@
         </main>
         <!-- page-content" -->
       </div>
+    </div>
       
 
