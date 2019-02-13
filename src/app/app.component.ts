@@ -1,8 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {ProfileServiceService} from './APIs/profile-service.service';
+
+import { Idle } from 'idlejs/dist';
 declare var jquery:any;
 declare const $: any;
+
+const idle = new Idle()
+  .whenNotInteractive()
+  .within(10)
+  .do(() => {
+     console.log('IDLE');
+     sessionStorage.clear();      
+     window.location.href = "/login";     
+  })
+  .start();
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

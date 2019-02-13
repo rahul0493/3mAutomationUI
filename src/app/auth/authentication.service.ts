@@ -15,7 +15,7 @@ export class AuthenticationService {
     
       //headers.append('Content-Type','application/json');
         // return this.http.post(environment.apiUrl+'/users/authenticate', { username, password })
-        return this.http.post('http://localhost:8081/login', {"username":username,"password": password },{headers:this.headers})
+        return this.http.post(environment.apiUrl+'/login', {"username":username,"password": password },{headers:this.headers})
            .pipe(map(user => {                
                 if (user["_body"]!="") {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
