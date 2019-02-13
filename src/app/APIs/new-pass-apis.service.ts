@@ -31,4 +31,15 @@ export class NewPassAPIsService {
       .map(res=>res.text);  
   
   }
+  changeServerFile(data){    
+    return this.http.post(environment.apiUrl+'/ChangePassword/changePasswordbyId/'+data.id,data,{headers:this.headers})
+    .map(res=>res.text);  
+
+}
+
+backupServerFile(data){    
+  return this.http.post(environment.apiUrl+'/ChangePassword/createBackup/'+data.id,data,{headers:this.headers})
+  .map(res=>res.text);  
+
+}
 }

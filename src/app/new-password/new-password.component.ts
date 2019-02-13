@@ -51,17 +51,31 @@ export class NewPasswordComponent implements OnInit {
   }
 
   saveNewPass(){
+    this.routeParams.params.subscribe( params =>{
+      //console.log(params) 
+      if(params.page=="new"){
     console.log(this.environmentList);
     this.newPassApi.savePass(this.environmentList)
     .subscribe(res=>{
       bootbox.alert("Saved Succesfully");
     })
   }
+  else{
+    this.newPassApi.changeServerFile(this.environmentList)
+    .subscribe(res=>{
+      bootbox.alert("Saved Succesfully");
+    })
+  }
+});
+  }
+  
 
   selectEnv(){
+    var env=this.environment.split(',');
+    this.environmentName=env[1];
     this.routeParams.params.subscribe( params =>{
       if(params.page=="new"){
-        this.newPassApi.readServerFile(this.environment)
+        this.newPassApi.readServerFile(env[0])
     .subscribe(res=>{
       this.environmentList=res;
       console.log(res);
@@ -71,44 +85,56 @@ export class NewPasswordComponent implements OnInit {
     });
       }
       else{
-        this.newPassApi.getNewPasswordList(this.environment)
+        this.newPassApi.getNewPasswordList(env[0])
         .subscribe(res=>{
+          if(res.id!=0){
           this.environmentList=res;
           console.log(res);
           this.hostDetailsDiv=true;
           this.submitBtn="Change Server Files";
+          }
+          else{
+            this.hostDetailsDiv=false;
+            bootbox.alert("No record found.Please add it from new password page");
+          }
         });
       }
-    });
+    });   
+  }
 
-    
-    
+  backup(){
+    this.newPassApi.backupServerFile(this.environmentList)
+    .subscribe(res=>{
+      bootbox.alert("Backup done succesfully");
+    })
   }
 
   selectAllNode(status){
-  //   if(status==true){
-  //   $.each( this.environmentList.nodes,( key, value )=>{
-  //     this.environmentList.nodes[key]=true;
-  //   });
+    if(status==true){
+      for(var i=0;i<this.environmentList.node.length;i++)
+      {
+         this.environmentList.node[i].isNode=true;
+      }
+     }
+     else{
+       for(var i=0;i<this.environmentList.node.length;i++)
+      {
+         this.environmentList.node[i].isNode=false;
+      }
+     }    
+
+  // if(status==true){
+  //   this.environmentList.node1=true;
+  //   this.environmentList.node2=true;
+  //   this.environmentList.node3=true;
+  //   this.environmentList.node4=true;
   // }
   // else{
-  //   $.each( this.environmentList.nodes,( key, value )=> {
-  //     this.environmentList.nodes[key]=false;
-  //   });
-  // }    
-
-  if(status==true){
-    this.environmentList.node1=true;
-    this.environmentList.node2=true;
-    this.environmentList.node3=true;
-    this.environmentList.node4=true;
-  }
-  else{
-    this.environmentList.node1=false;
-    this.environmentList.node2=false;
-    this.environmentList.node3=false;
-    this.environmentList.node4=false;
-  }
+  //   this.environmentList.node1=false;
+  //   this.environmentList.node2=false;
+  //   this.environmentList.node3=false;
+  //   this.environmentList.node4=false;
+  // }
      
    }
 }
