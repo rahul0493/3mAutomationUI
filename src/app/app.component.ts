@@ -33,6 +33,39 @@ navBars:Boolean;
       else{
         this.profileName=res.displayName;
         this.navBars=true;
+        setTimeout(function(){
+          $(".sidebar-dropdown > a").click(function() {
+            $(".sidebar-submenu").slideUp(200);
+            if (
+              $(this)
+                .parent()
+                .hasClass("active")
+            ) {
+              $(".sidebar-dropdown").removeClass("active");
+              $(this)
+                .parent()
+                .removeClass("active");
+            } else {
+              $(".sidebar-dropdown").removeClass("active");
+              $(this)
+                .next(".sidebar-submenu")
+                .slideDown(200);
+              $(this)
+                .parent()
+                .addClass("active");
+            }
+            //return false;
+          });
+          
+          $("#close-sidebar").on().click(function() {
+            $(".page-wrapper").removeClass("toggled");
+            return false;
+          });
+          $("#show-sidebar").on().click(function() {
+            $(".page-wrapper").addClass("toggled");
+            return false;
+          });
+        },50);
       }
     });
     } 
@@ -41,38 +74,7 @@ navBars:Boolean;
   
   ngOnInit(){
     this.ProfileServiceService.setName(sessionStorage.getItem('currentUser')); 
-    console.log("appComp");
-    $(".sidebar-dropdown > a").click(function() {
-      $(".sidebar-submenu").slideUp(200);
-      if (
-        $(this)
-          .parent()
-          .hasClass("active")
-      ) {
-        $(".sidebar-dropdown").removeClass("active");
-        $(this)
-          .parent()
-          .removeClass("active");
-      } else {
-        $(".sidebar-dropdown").removeClass("active");
-        $(this)
-          .next(".sidebar-submenu")
-          .slideDown(200);
-        $(this)
-          .parent()
-          .addClass("active");
-      }
-      //return false;
-    });
-    
-    $("#close-sidebar").on().click(function() {
-      $(".page-wrapper").removeClass("toggled");
-      return false;
-    });
-    $("#show-sidebar").on().click(function() {
-      $(".page-wrapper").addClass("toggled");
-      return false;
-    });
+    console.log("appComp");   
   }
 
   logout(){
