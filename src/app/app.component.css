@@ -1,12 +1,4 @@
 
-  main{
-    top: 56px;
-    position: relative;margin-left: auto;
-  }
-  .navbar-nav{
-    margin-left: auto;
-  }
-  .main-sidebar{
-    font-size: 15px;
-  }
-  
+.logout:hover{
+  cursor: pointer;
+}

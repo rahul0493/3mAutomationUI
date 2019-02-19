@@ -31,4 +31,6 @@ table .fa:hover {
       .btn-default {
         background-color: #00000038 !important;
       }
-      
+      .modal-backdrop{
+          z-index: 0 !important;
+      }
