@@ -105,10 +105,23 @@ export class NewPasswordComponent implements OnInit {
   backup(){
     this.newPassApi.backupServerFile(this.environmentList)
     .subscribe(res=>{
-      bootbox.alert("Backup done succesfully");
+      bootbox.alert("File Backup done succesfully");
     })
   }
 
+  crontabBackup(){
+    this.newPassApi.crontabBackup(this.environmentList)
+    .subscribe(res=>{
+      bootbox.alert("Crontab Backup done succesfully");
+    }) 
+  }
+
+  createCrontab(){
+    this.newPassApi.createCrontab(this.environmentList)
+    .subscribe(res=>{
+      bootbox.alert("Crontab Created succesfully");
+    }) 
+  }
   selectAllNode(status){
     if(status==true){
       for(var i=0;i<this.environmentList.node.length;i++)
@@ -123,18 +136,7 @@ export class NewPasswordComponent implements OnInit {
       }
      }    
 
-  // if(status==true){
-  //   this.environmentList.node1=true;
-  //   this.environmentList.node2=true;
-  //   this.environmentList.node3=true;
-  //   this.environmentList.node4=true;
-  // }
-  // else{
-  //   this.environmentList.node1=false;
-  //   this.environmentList.node2=false;
-  //   this.environmentList.node3=false;
-  //   this.environmentList.node4=false;
-  // }
+ 
      
    }
 }

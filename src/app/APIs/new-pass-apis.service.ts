@@ -42,4 +42,15 @@ backupServerFile(data){
   .map(res=>res.text);  
 
 }
+
+crontabBackup(data){    
+  return this.http.post(environment.apiUrl+'/ChangePassword/croneBackUp/'+data.id,data,{headers:this.headers})
+  .map(res=>res.text);  
+
+}
+createCrontab(data){    
+  return this.http.post(environment.apiUrl+'/ChangePassword/createCroneTab/'+data.id,data,{headers:this.headers})
+  .map(res=>res.text);  
+
+}
 }
