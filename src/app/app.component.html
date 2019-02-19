@@ -1,10 +1,10 @@
 
-  <div *ngIf="navBars">
+  <div *ngIf="!navBars">
     <router-outlet></router-outlet>    
   </div>       
 
 
-<div class="wrapper" *ngIf="!navBars" >
+<div class="wrapper" *ngIf="navBars" >
 
   <header class="main-header">
 
@@ -99,7 +99,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a routerLink="newPass/new"><i class="fa fa-lock"></i> New Password</a></li>
-                <li><a routerLink="newPass/change"><i class="fa fa-eye"></i> Change Password</a></li>
+                <li><a routerLink="changPass/change"><i class="fa fa-eye"></i> Change Password</a></li>
                 <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i> Host Details</a></li>                
               </ul>
             </li>
