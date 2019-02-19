@@ -91,9 +91,9 @@
      }
  }
  
- .content-wrapper {
+ .content-wrapper,.skin-blue .wrapper {
      min-height: 100%;
-     background-color: #ecf0f5;
+     background-color: #ecf0f5 !important;
      z-index: 800
  }
  
