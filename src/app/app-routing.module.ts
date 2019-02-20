@@ -10,13 +10,13 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { DbConnectionComponent } from './db-connection/db-connection.component';
 
 const routes: Routes = [
-  {"path":'',component:HomeComponent,},
+  {"path":'',component:HomeComponent,canActivate:[AuthGaurdService]},
   {"path":'login',component:LoginComponent},
-  {"path":'hostDetails',component:HostDetailsComponent,},
-  {'path':'newPass/:page',component:NewPasswordComponent,},
-  {'path':'changPass/:page',component:NewPasswordComponent,},
-  {'path':'resetPass',component:ResetPasswordComponent,},
-  {'path':'dbConn',component:DbConnectionComponent,}
+  {"path":'hostDetails',component:HostDetailsComponent,canActivate:[AuthGaurdService]},
+  {'path':'newPass/:page',component:NewPasswordComponent,canActivate:[AuthGaurdService]},
+  {'path':'changPass/:page',component:NewPasswordComponent,canActivate:[AuthGaurdService]},
+  {'path':'resetPass',component:ResetPasswordComponent,canActivate:[AuthGaurdService]},
+  {'path':'dbConn',component:DbConnectionComponent,canActivate:[AuthGaurdService]}
 ];
 
 @NgModule({

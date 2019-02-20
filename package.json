@@ -24,6 +24,7 @@
     "angular-material-data-table": "^0.10.10",
     "bootbox": "^4.4.0",
     "bootstrap": "^3.3.7",
+    "canvasjs": "^1.8.1",
     "core-js": "^2.5.4",
     "datatables": "^1.10.18",
     "datatables-buttons": "^1.0.3",

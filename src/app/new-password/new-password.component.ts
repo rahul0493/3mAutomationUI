@@ -61,10 +61,14 @@ export class NewPasswordComponent implements OnInit {
     })
   }
   else{
+    bootbox.confirm("<label>Are you sure, you want to update Server Files</label>",(result)=>{
+      if(result==true){  
     this.newPassApi.changeServerFile(this.environmentList)
     .subscribe(res=>{
       bootbox.alert("Saved Succesfully");
     })
+  }
+});
   }
 });
   }
@@ -103,24 +107,36 @@ export class NewPasswordComponent implements OnInit {
   }
 
   backup(){
+    bootbox.confirm("<label>Are you sure, you want to take Server File Backup</label>",(result)=>{
+      if(result==true){  
     this.newPassApi.backupServerFile(this.environmentList)
     .subscribe(res=>{
       bootbox.alert("File Backup done succesfully");
     })
   }
+  });
+  }
 
   crontabBackup(){
+    bootbox.confirm("<label>Are you sure, you want to take Crontab Backup & Remove from Server</label>",(result)=>{
+      if(result==true){  
     this.newPassApi.crontabBackup(this.environmentList)
     .subscribe(res=>{
       bootbox.alert("Crontab Backup done succesfully");
     }) 
   }
+});
+  }
 
   createCrontab(){
+    bootbox.confirm("<label>Are you sure, you want to create Crontab on Server</label>",(result)=>{
+      if(result==true){  
     this.newPassApi.createCrontab(this.environmentList)
     .subscribe(res=>{
       bootbox.alert("Crontab Created succesfully");
     }) 
+  }
+  });
   }
   selectAllNode(status){
     if(status==true){

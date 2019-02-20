@@ -75,8 +75,8 @@
       </div> -->
       
 <div class="row"> 
-  <div class="col-lg-4">
-      <div class="box box-default">
+  <div class="col-lg-3">
+      <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Daily Incidents</h3>
 
@@ -89,21 +89,19 @@
           
           <div class="box-body">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-7">
                 <div class="chart-responsive">
-                  <canvas id="pieChart" height="150"></canvas>
+                  <canvas id="daily" height="150"></canvas>
                 </div>
                 
               </div>
               
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <ul class="chart-legend clearfix">
-                  <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                  <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                  <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                  <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                  <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                  <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                  <li><i class="fa fa-circle-o text-red"></i> New</li>
+                  <li><i class="fa fa-circle-o text-green"></i> Opened</li>
+                  <li><i class="fa fa-circle-o text-yellow"></i> In Progress</li>
+                  <li><i class="fa fa-circle-o text-aqua"></i> Closed</li>                 
                 </ul>
               </div>
               <!-- /.col -->
@@ -114,8 +112,8 @@
           <!-- /.footer -->
         </div>
       </div>
-      <div class="col-lg-4">
-          <div class="box box-default">
+      <div class="col-lg-3">
+          <div class="box box-warning">
               <div class="box-header with-border">
                 <h3 class="box-title">Weekly Incidents</h3>
     
@@ -128,21 +126,19 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <div class="chart-responsive">
-                      <canvas id="pieChart" height="150"></canvas>
+                      <canvas id="weekly" height="150"></canvas>
                     </div>
                     <!-- ./chart-responsive -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-md-4">
+                  <div class="col-md-5">
                     <ul class="chart-legend clearfix">
-                      <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                      <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                      <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                      <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                      <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                      <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                        <li><i class="fa fa-circle-o text-red"></i> New</li>
+                        <li><i class="fa fa-circle-o text-green"></i> Opened</li>
+                        <li><i class="fa fa-circle-o text-yellow"></i> In Progress</li>
+                        <li><i class="fa fa-circle-o text-aqua"></i> Closed</li>       
                     </ul>
                   </div>
                   <!-- /.col -->
@@ -153,8 +149,8 @@
               <!-- /.footer -->
             </div>
           </div>
-          <div class="col-lg-4">
-              <div class="box box-default">
+          <div class="col-lg-3">
+              <div class="box box-success">
                   <div class="box-header with-border">
                     <h3 class="box-title">Monthly Incidents</h3>
         
@@ -167,21 +163,19 @@
                   <!-- /.box-header -->
                   <div class="box-body">
                     <div class="row">
-                      <div class="col-md-8">
+                      <div class="col-md-7">
                         <div class="chart-responsive">
-                          <canvas id="pieChart" height="150"></canvas>
+                          <canvas id="monthly" height="150"></canvas>
                         </div>
                         <!-- ./chart-responsive -->
                       </div>
                       <!-- /.col -->
-                      <div class="col-md-4">
+                      <div class="col-md-5">
                         <ul class="chart-legend clearfix">
-                          <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                          <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                          <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                          <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                          <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                          <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                            <li><i class="fa fa-circle-o text-red"></i> New</li>
+                            <li><i class="fa fa-circle-o text-green"></i> Opened</li>
+                            <li><i class="fa fa-circle-o text-yellow"></i> In Progress</li>
+                            <li><i class="fa fa-circle-o text-aqua"></i> Closed</li>       
                         </ul>
                       </div>
                       <!-- /.col -->
@@ -192,6 +186,57 @@
                   <!-- /.footer -->
                 </div>
               </div>
+              <div class="col-md-3">
+                  <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Upcoming Events</h3>
+          
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                          </button>
+                          
+                        </div>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                          <li class="item">
+                            <div class="product-img">
+                              <img src="../assets/img/default-50x50.gif" alt="Product Image">
+                            </div>
+                            <div class="product-info">
+                              <a href="javascript:void(0)" class="product-title">SAP
+                                <span class="label label-warning pull-right">New</span> 
+                              </a>
+                              <span class="product-description">
+                                    SAP go live
+                                  </span>
+                                  <span class="product-description">
+                                      On Monday, 25th Feb, 2019.
+                                    </span>
+                            </div>
+                          </li>
+                          <!-- /.item -->
+                          <li class="item">
+                            <div class="product-img">
+                              <img src="../assets/img/default-50x50.gif" alt="Product Image">
+                            </div>
+                            <div class="product-info">
+                              <a href="javascript:void(0)" class="product-title">3M
+                                <span class="label label-info pull-right">New</span>
+                              </a>
+                              <span class="product-description">
+                                    3M Maintainance
+                                  </span>
+                                  <span class="product-description">
+                                      On Monday, 28th Feb, 2019.
+                                    </span>
+                            </div>
+                          </li>                   
+                        </ul>
+                      </div>               
+                    </div>                                    
+                </div>
     </div>
 
 
@@ -200,7 +245,7 @@
     
 
       <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-12">
           <!-- USERS LIST -->
           <div class="box box-danger">
             <div class="box-header with-border">
@@ -215,7 +260,10 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
+            <div class="box-body text-center">
+              <div class="row">
+              <div class="col-lg-3">
+                <h3>First Shift</h3>
               <ul class="users-list clearfix">
                 <li>
                   <img src="../assets/img/user1-128x128.jpg" alt="User Image">
@@ -228,6 +276,33 @@
                   <span class="users-list-date">Yesterday</span>
                 </li>
                 <li>
+                    <img src="../assets/img/user2-160x160.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Alexander</a>
+                    <span class="users-list-date">13 Jan</span>
+                  </li>
+                  
+                  <li>
+                    <img src="../assets/img/user5-128x128.jpg" alt="User Image">
+                    <a class="users-list-name" href="#">Sarah</a>
+                    <span class="users-list-date">14 Jan</span>
+                  </li>
+                  
+                      <li>
+                          <img src="../assets/img/user7-128x128.jpg" alt="User Image">
+                          <a class="users-list-name" href="#">Jane</a>
+                          <span class="users-list-date">12 Jan</span>
+                        </li>
+                        <li>
+                          <img src="../assets/img/user6-128x128.jpg" alt="User Image">
+                          <a class="users-list-name" href="#">John</a>
+                          <span class="users-list-date">12 Jan</span>
+                        </li> 
+              </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h3>Second Shift</h3>
+                  <ul class="users-list clearfix">
+                <li>
                   <img src="../assets/img/user7-128x128.jpg" alt="User Image">
                   <a class="users-list-name" href="#">Jane</a>
                   <span class="users-list-date">12 Jan</span>
@@ -237,101 +312,47 @@
                   <a class="users-list-name" href="#">John</a>
                   <span class="users-list-date">12 Jan</span>
                 </li>
+              </ul>
+              </div>
+           
+              <div class="col-lg-3">
+                  <h3>Night Shift</h3>
+                  <ul class="users-list clearfix">
                 <li>
                   <img src="../assets/img/user2-160x160.jpg" alt="User Image">
                   <a class="users-list-name" href="#">Alexander</a>
                   <span class="users-list-date">13 Jan</span>
                 </li>
+                
                 <li>
                   <img src="../assets/img/user5-128x128.jpg" alt="User Image">
                   <a class="users-list-name" href="#">Sarah</a>
                   <span class="users-list-date">14 Jan</span>
                 </li>
+              </ul>
+            </div>
+            <div class="col-lg-3">
+                <h3>General Shift</h3>
+                <ul class="users-list clearfix">
                 <li>
                   <img src="../assets/img/user4-128x128.jpg" alt="User Image">
                   <a class="users-list-name" href="#">Nora</a>
                   <span class="users-list-date">15 Jan</span>
                 </li>
+              
                 <li>
                   <img src="../assets/img/user3-128x128.jpg" alt="User Image">
                   <a class="users-list-name" href="#">Nadia</a>
                   <span class="users-list-date">15 Jan</span>
                 </li>
-              </ul>            
+              </ul>   
+              </div> 
+            </div>        
             </div>           
           </div>          
         </div>
 
-        <div class="col-md-5">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Upcoming Events</h3>
-    
-                  <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    
-                  </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="../assets/img/default-50x50.gif" alt="Product Image">
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">Samsung TV
-                          <span class="label label-warning pull-right">$1800</span></a>
-                        <span class="product-description">
-                              Samsung 32" 1080p 60Hz LED Smart HDTV.
-                            </span>
-                      </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="../assets/img/default-50x50.gif" alt="Product Image">
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">Bicycle
-                          <span class="label label-info pull-right">$700</span></a>
-                        <span class="product-description">
-                              26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                            </span>
-                      </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="../assets/img/default-50x50.gif" alt="Product Image">
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">Xbox One <span
-                            class="label label-danger pull-right">$350</span></a>
-                        <span class="product-description">
-                              Xbox One Console Bundle with Halo Master Chief Collection.
-                            </span>
-                      </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="../assets/img/default-50x50.gif" alt="Product Image">
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">PlayStation 4
-                          <span class="label label-success pull-right">$399</span></a>
-                        <span class="product-description">
-                              PlayStation 4 500GB Console (PS4)
-                            </span>
-                      </div>
-                    </li>
-                    
-                  </ul>
-                </div>               
-              </div>                                    
-          </div>
+      
       </div>     
     </section>
     

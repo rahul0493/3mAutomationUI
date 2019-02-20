@@ -36,7 +36,7 @@
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",  
-              "src/bower_components/bootstrap/dist/js/bootstrap.min.js",   
+              "src/bower_components/bootstrap/dist/js/bootstrap.min.js",              
               "src/bower_components/fastclick/lib/fastclick.js",
               "src/dist/js/adminlte.min.js",   
               "src/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js", 
@@ -44,8 +44,7 @@
               "src/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
               "src/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
               "src/bower_components/chart.js/Chart.js",
-              
-              
+                            
               "./node_modules/bootbox/bootbox.js", 
               "./node_modules/datatables/media/js/jquery.dataTables.min.js",               
               "./node_modules/datatables-buttons/js/dataTables.buttons.js"                                         

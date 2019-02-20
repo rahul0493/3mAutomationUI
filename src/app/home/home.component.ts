@@ -12,42 +12,101 @@ declare var Chart:any;
 export class HomeComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit() {
-    
-    // -------------
-    // - PIE CHART -
-    // -------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
-    var pieChart       = new Chart(pieChartCanvas);
-    var PieData        = [
+  incident=[{
+    "id":"daily",
+    "PieData": [
       {
-        value    : 60,
+        value    : 7,
         color    : '#f56954',
         highlight: '#f56954',
-        label    : 'Chrome'
+        label    : 'New'
       },
       {
         value    : 20,
         color    : '#00a65a',
         highlight: '#00a65a',
-        label    : 'IE'
+        label    : 'Opened'
+      },
+      {
+        value    : 12,
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'In Progress'
+      },
+      {
+        value    : 16,
+        color    : '#00c0ef',
+        highlight: '#00c0ef',
+        label    : 'Closed'
+      }      
+    ]
+  },
+  {
+    "id":"weekly",
+    "PieData": [
+      {
+        value    : 25,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'New'
+      },
+      {
+        value    : 8,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'Opened'
+      },
+      {
+        value    : 3,
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'In Progress'
+      },
+      {
+        value    : 11,
+        color    : '#00c0ef',
+        highlight: '#00c0ef',
+        label    : 'Closed'
+      }      
+    ]
+  },
+  {
+    "id":"monthly",
+    "PieData": [
+      {
+        value    : 60,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'New'
+      },
+      {
+        value    : 20,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'Opened'
       },
       {
         value    : 15,
         color    : '#f39c12',
         highlight: '#f39c12',
-        label    : 'FireFox'
+        label    : 'In Progress'
       },
       {
         value    : 5,
         color    : '#00c0ef',
         highlight: '#00c0ef',
-        label    : 'Safari'
-      }
-      
-    ];
+        label    : 'Closed'
+      }      
+    ]
+  }  
+]
+   
+
+  createPieChart(id,PieData){
+
+    var pieChartCanvas = $('#'+id).get(0).getContext('2d');
+    var pieChart       = new Chart(pieChartCanvas);
+   
     var pieOptions     = {
       // Boolean - Whether we should show a stroke on each segment
       segmentShowStroke    : true,
@@ -64,7 +123,7 @@ export class HomeComponent implements OnInit {
       // Boolean - Whether we animate the rotation of the Doughnut
       animateRotate        : true,
       // Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
+      animateScale         : true,
       // Boolean - whether to make the chart responsive to window resizing
       responsive           : true,
       // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
@@ -72,11 +131,17 @@ export class HomeComponent implements OnInit {
       // String - A legend template
       legendTemplate       : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
       // String - A tooltip template
-      tooltipTemplate      : '<%=value %> <%=label%> users'
+      tooltipTemplate      : '<%=value %> <%=label%>',
     };
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);
+    pieChart.Pie(PieData, pieOptions);
+  }
+  ngOnInit() {
+     for(var i=0;i<this.incident.length;i++){
+      this.createPieChart(this.incident[i].id,this.incident[i].PieData);
+     }
+    
   }
 
 }
