@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {formatDate } from '@angular/common';
 
 declare var jquery:any;
 declare var bootbox:any;
@@ -9,94 +10,137 @@ declare var Chart:any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
+date:String;
   constructor() { }
   incident=[{
     "id":"daily",
     "PieData": [
       {
-        value    : 7,
+        value    : 21,
         color    : '#f56954',
         highlight: '#f56954',
-        label    : 'New'
-      },
+        label    : 'Opened'
+      },    
+     
       {
-        value    : 20,
+        value    : 5,
         color    : '#00a65a',
         highlight: '#00a65a',
-        label    : 'Opened'
+        label    : 'Work in Progress'
       },
       {
         value    : 12,
         color    : '#f39c12',
         highlight: '#f39c12',
-        label    : 'In Progress'
+        label    : 'Pending Vendor'
       },
       {
         value    : 16,
         color    : '#00c0ef',
         highlight: '#00c0ef',
-        label    : 'Closed'
-      }      
+        label    : 'Pending Client'
+      } ,
+      
+      {
+        value    : 9,
+        color    : '#3c8dbc ',
+        highlight: '#3c8dbc ',
+        label    : 'Resolved'
+      },    
+      {
+        value    : 4,
+        color    : '#d2d6de ',
+        highlight: '#d2d6de ',
+        label    : 'Redirected'
+      }
     ]
   },
   {
     "id":"weekly",
     "PieData": [
       {
-        value    : 25,
+        value    : 15,
         color    : '#f56954',
         highlight: '#f56954',
-        label    : 'New'
-      },
+        label    : 'Opened'
+      },    
+     
       {
-        value    : 8,
+        value    : 20,
         color    : '#00a65a',
         highlight: '#00a65a',
-        label    : 'Opened'
+        label    : 'Work in Progress'
+      },
+      {
+        value    : 12,
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'Pending Vendor'
       },
       {
         value    : 3,
-        color    : '#f39c12',
-        highlight: '#f39c12',
-        label    : 'In Progress'
-      },
-      {
-        value    : 11,
         color    : '#00c0ef',
         highlight: '#00c0ef',
-        label    : 'Closed'
-      }      
+        label    : 'Pending Client'
+      } ,
+      
+      {
+        value    : 25,
+        color    : '#3c8dbc ',
+        highlight: '#3c8dbc ',
+        label    : 'Resolved'
+      },    
+      {
+        value    : 7,
+        color    : '#d2d6de ',
+        highlight: '#d2d6de ',
+        label    : 'Redirected'
+      }
     ]
   },
   {
     "id":"monthly",
     "PieData": [
       {
-        value    : 60,
+        value    : 5,
         color    : '#f56954',
         highlight: '#f56954',
-        label    : 'New'
-      },
+        label    : 'Opened'
+      },    
+     
       {
-        value    : 20,
+        value    : 12,
         color    : '#00a65a',
         highlight: '#00a65a',
-        label    : 'Opened'
+        label    : 'Work in Progress'
       },
       {
-        value    : 15,
+        value    : 17,
         color    : '#f39c12',
         highlight: '#f39c12',
-        label    : 'In Progress'
+        label    : 'Pending Vendor'
       },
       {
-        value    : 5,
+        value    : 23,
         color    : '#00c0ef',
         highlight: '#00c0ef',
-        label    : 'Closed'
-      }      
+        label    : 'Pending Client'
+      } ,
+      
+      {
+        value    : 10,
+        color    : '#3c8dbc ',
+        highlight: '#3c8dbc ',
+        label    : 'Resolved'
+      },    
+      {
+        value    : 6,
+        color    : '#d2d6de ',
+        highlight: '#d2d6de ',
+        label    : 'Redirected'
+      }
     ]
   }  
 ]
@@ -138,10 +182,12 @@ export class HomeComponent implements OnInit {
     pieChart.Pie(PieData, pieOptions);
   }
   ngOnInit() {
+    this.date=formatDate(new Date(), 'dd MMM, yyyy.', 'en-US', '+0530');
+    setTimeout(()=>{
      for(var i=0;i<this.incident.length;i++){
       this.createPieChart(this.incident[i].id,this.incident[i].PieData);
      }
-    
+    },60);
   }
 
 }

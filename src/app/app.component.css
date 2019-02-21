@@ -2,3 +2,6 @@
 .logout:hover{
   cursor: pointer;
 }
+.nav-item img{
+  padding: 5px;
+}

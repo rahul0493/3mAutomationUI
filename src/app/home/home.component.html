@@ -75,10 +75,11 @@
       </div> -->
       
 <div class="row"> 
-  <div class="col-lg-3">
+
+  <div class="col-lg-4" *ngFor="let x of incident">
       <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Daily Incidents</h3>
+            <h3 class="box-title">{{x.id}} Incidents</h3>
 
             <div class="box-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -89,19 +90,21 @@
           
           <div class="box-body">
             <div class="row">
-              <div class="col-md-7">
+              <div class="col-md-6">
                 <div class="chart-responsive">
-                  <canvas id="daily" height="150"></canvas>
+                  <canvas id="{{x.id}}" height="150"></canvas>
                 </div>
                 
               </div>
               
-              <div class="col-md-5">
+              <div class="col-md-6">
                 <ul class="chart-legend clearfix">
-                  <li><i class="fa fa-circle-o text-red"></i> New</li>
-                  <li><i class="fa fa-circle-o text-green"></i> Opened</li>
-                  <li><i class="fa fa-circle-o text-yellow"></i> In Progress</li>
-                  <li><i class="fa fa-circle-o text-aqua"></i> Closed</li>                 
+                  <li *ngFor="let y of x.PieData"><i class="fa fa-circle-o" [style.color]="y.color"></i> {{y.label}} - <b>{{y.value}}</b></li>
+                  <!-- <li><i class="fa fa-circle-o text-green"></i> Work In Progress </li>
+                  <li><i class="fa fa-circle-o text-yellow"></i> Pending Vendor</li>
+                  <li><i class="fa fa-circle-o text-aqua"></i> Pending Client</li>
+                  <li><i class="fa fa-circle-o text-light-blue"></i> Resolved</li>     
+                  <li><i class="fa fa-circle-o text-gray"></i> Redirected</li>                       -->
                 </ul>
               </div>
               <!-- /.col -->
@@ -111,132 +114,7 @@
           <!-- /.box-body -->
           <!-- /.footer -->
         </div>
-      </div>
-      <div class="col-lg-3">
-          <div class="box box-warning">
-              <div class="box-header with-border">
-                <h3 class="box-title">Weekly Incidents</h3>
-    
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                 
-                </div>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="chart-responsive">
-                      <canvas id="weekly" height="150"></canvas>
-                    </div>
-                    <!-- ./chart-responsive -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-md-5">
-                    <ul class="chart-legend clearfix">
-                        <li><i class="fa fa-circle-o text-red"></i> New</li>
-                        <li><i class="fa fa-circle-o text-green"></i> Opened</li>
-                        <li><i class="fa fa-circle-o text-yellow"></i> In Progress</li>
-                        <li><i class="fa fa-circle-o text-aqua"></i> Closed</li>       
-                    </ul>
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.box-body -->
-              <!-- /.footer -->
-            </div>
-          </div>
-          <div class="col-lg-3">
-              <div class="box box-success">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Monthly Incidents</h3>
-        
-                    <div class="box-tools pull-right">
-                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                      </button>
-                     
-                    </div>
-                  </div>
-                  <!-- /.box-header -->
-                  <div class="box-body">
-                    <div class="row">
-                      <div class="col-md-7">
-                        <div class="chart-responsive">
-                          <canvas id="monthly" height="150"></canvas>
-                        </div>
-                        <!-- ./chart-responsive -->
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-md-5">
-                        <ul class="chart-legend clearfix">
-                            <li><i class="fa fa-circle-o text-red"></i> New</li>
-                            <li><i class="fa fa-circle-o text-green"></i> Opened</li>
-                            <li><i class="fa fa-circle-o text-yellow"></i> In Progress</li>
-                            <li><i class="fa fa-circle-o text-aqua"></i> Closed</li>       
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                  </div>
-                  <!-- /.box-body -->
-                  <!-- /.footer -->
-                </div>
-              </div>
-              <div class="col-md-3">
-                  <div class="box box-primary">
-                      <div class="box-header with-border">
-                        <h3 class="box-title">Upcoming Events</h3>
-          
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                          </button>
-                          
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body">
-                        <ul class="products-list product-list-in-box">
-                          <li class="item">
-                            <div class="product-img">
-                              <img src="../assets/img/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">SAP
-                                <span class="label label-warning pull-right">New</span> 
-                              </a>
-                              <span class="product-description">
-                                    SAP go live
-                                  </span>
-                                  <span class="product-description">
-                                      On Monday, 25th Feb, 2019.
-                                    </span>
-                            </div>
-                          </li>
-                          <!-- /.item -->
-                          <li class="item">
-                            <div class="product-img">
-                              <img src="../assets/img/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">3M
-                                <span class="label label-info pull-right">New</span>
-                              </a>
-                              <span class="product-description">
-                                    3M Maintainance
-                                  </span>
-                                  <span class="product-description">
-                                      On Monday, 28th Feb, 2019.
-                                    </span>
-                            </div>
-                          </li>                   
-                        </ul>
-                      </div>               
-                    </div>                                    
-                </div>
+      </div>                 
     </div>
 
 
@@ -245,11 +123,11 @@
     
 
       <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
           <!-- USERS LIST -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Available Shift Resource of the Day</h3>
+              <h3 class="box-title">Available Shift Resource of the Day, {{date}}</h3>
 
               <div class="box-tools pull-right">
                 <!-- <span class="label label-danger">8 New Members</span> -->
@@ -260,9 +138,37 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body text-center">
-              <div class="row">
-              <div class="col-lg-3">
+            <div class="box-body">              
+                <table class="table table-responsive table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Shift</th>
+                      <th>Employees</th>
+                    </tr>                    
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><b>1S</b> (First Shift)</td>
+                      <td>shoban, Rahul, Chaitu</td>
+                    </tr>
+                    <tr>
+                        <td><b>2S</b> (Second Shift)</td>
+                        <td>Aditya, Rajeev</td>
+                      </tr>
+                      <tr>
+                          <td><b>3S</b> (Night Shift)</td>
+                          <td>Ramcharan, Naresh</td>
+                        </tr>
+                        <tr>
+                            <td><b>GS</b> (General Shift)</td>
+                            <td>Pradeep, Nikhil</td>
+                          </tr>
+                  </tbody>
+                </table>
+
+
+
+              <!-- <div class="col-lg-3">
                 <h3>First Shift</h3>
               <ul class="users-list clearfix">
                 <li>
@@ -346,11 +252,63 @@
                   <span class="users-list-date">15 Jan</span>
                 </li>
               </ul>   
-              </div> 
-            </div>        
+              </div>  -->
+             
             </div>           
           </div>          
         </div>
+
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Events</h3>
+    
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="../assets/img/default-50x50.gif" alt="Product Image">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript:void(0)" class="product-title">SAP
+                          <span class="label label-warning pull-right">New</span> 
+                        </a>
+                        <span class="product-description">
+                              SAP go live
+                            </span>
+                            <span class="product-description">
+                                On Monday, 25th Feb, 2019.
+                              </span>
+                      </div>
+                    </li>
+                    <!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="../assets/img/default-50x50.gif" alt="Product Image">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript:void(0)" class="product-title">3M
+                          <span class="label label-info pull-right">New</span>
+                        </a>
+                        <span class="product-description">
+                              3M Maintainance
+                            </span>
+                            <span class="product-description">
+                                On Monday, 28th Feb, 2019.
+                              </span>
+                      </div>
+                    </li>                   
+                  </ul>
+                </div>               
+              </div>                                    
+          </div>
 
       
       </div>     

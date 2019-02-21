@@ -1,27 +1,36 @@
 .card {
     transform: translateY(50%);
-    /* margin:auto; */
-    padding:20px;
-    background-color: #0000009c;
-    color:white;
+    padding: 20px;
+    background-color: #00d9ff00;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #1d1d1f91;
 } 
 .loginPage{
-    background-image: url(http://park.shifting-gears.com/wp-content/uploads/2016/09/3M-Car-Care.jpg); 
-    background-repeat: no-repeat;
+    background-image: url(src/assets/img/login.png); 
+     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    position: absolute;
-    height: 100%;
-    width: 100%;
+     background-attachment: fixed;
+     position: absolute;
+     height: 100%;
+     width: 100%; 
+}
+.loginPage label{ 
+    font-size: 16px;
+    font-weight: 600;
 }
 .btn-primary:hover{
     color: #fff;
-    background-color: #aaaaaa;
-    border-color: #aaaaaa;
+    background-color: #ffbd1c;
+    border-color: #ffbd1c;
 }
 
 .btn-primary{
     color: #fff;
     background-color: #ee1d23;
     border-color: #ee1d23;
+}
+.loginLogo{
+    padding: 5px 0px;
+    width: 50%;
 }
