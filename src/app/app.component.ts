@@ -5,6 +5,7 @@ import {ProfileServiceService} from './APIs/profile-service.service';
 import { Idle } from 'idlejs/dist';
 declare var jquery:any;
 declare const $: any;
+declare var bootbox:any;
 
 const idle = new Idle()
   .whenNotInteractive()
@@ -78,8 +79,16 @@ navBars:Boolean;
   }
 
   logout(){
-    sessionStorage.clear();
-    this.ProfileServiceService.setName(sessionStorage.getItem('currentUser'));  
-    this.router.navigate(['login']);
+    bootbox.confirm({
+      size: "small",
+  message: "<label>Are you sure, you want to logout</label>", 
+  callback: (result)=>{ 
+    if(result==true){  
+      sessionStorage.clear();
+      this.ProfileServiceService.setName(sessionStorage.getItem('currentUser'));  
+      this.router.navigate(['login']);
+        }
+  }
+});         
   }
 }

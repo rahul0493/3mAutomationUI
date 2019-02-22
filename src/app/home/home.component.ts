@@ -41,19 +41,19 @@ date:String;
         color    : '#00c0ef',
         highlight: '#00c0ef',
         label    : 'Pending Client'
-      } ,
-      
+      } ,      
+     
+      {
+        value    : 4,
+        color    : '#5e5e5f ',
+        highlight: '#5e5e5f ',
+        label    : 'Redirected'
+      },
       {
         value    : 9,
         color    : '#3c8dbc ',
         highlight: '#3c8dbc ',
         label    : 'Resolved'
-      },    
-      {
-        value    : 4,
-        color    : '#d2d6de ',
-        highlight: '#d2d6de ',
-        label    : 'Redirected'
       }
     ]
   },
@@ -85,19 +85,19 @@ date:String;
         highlight: '#00c0ef',
         label    : 'Pending Client'
       } ,
-      
+      {
+        value    : 7,
+        color    : '#5e5e5f ',
+        highlight: '#5e5e5f ',
+        label    : 'Redirected'
+      },
       {
         value    : 25,
         color    : '#3c8dbc ',
         highlight: '#3c8dbc ',
         label    : 'Resolved'
-      },    
-      {
-        value    : 7,
-        color    : '#d2d6de ',
-        highlight: '#d2d6de ',
-        label    : 'Redirected'
-      }
+      }    
+      
     ]
   },
   {
@@ -128,19 +128,19 @@ date:String;
         highlight: '#00c0ef',
         label    : 'Pending Client'
       } ,
-      
+      {
+        value    : 6,
+        color    : '#5e5e5f ',
+        highlight: '#5e5e5f ',
+        label    : 'Redirected'
+      },
       {
         value    : 10,
         color    : '#3c8dbc ',
         highlight: '#3c8dbc ',
         label    : 'Resolved'
-      },    
-      {
-        value    : 6,
-        color    : '#d2d6de ',
-        highlight: '#d2d6de ',
-        label    : 'Redirected'
-      }
+      }    
+      
     ]
   }  
 ]

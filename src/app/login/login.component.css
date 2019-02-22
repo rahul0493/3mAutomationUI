@@ -1,8 +1,8 @@
 .card {
     transform: translateY(50%);
     padding: 20px;
-    background-color: #00d9ff00;
-    color: white;
+    background-color: #ffffff;
+    color:black;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px #1d1d1f91;
 } 
@@ -21,8 +21,8 @@
 }
 .btn-primary:hover{
     color: #fff;
-    background-color: #ffbd1c;
-    border-color: #ffbd1c;
+    background-color: black;
+    border-color: black;
 }
 
 .btn-primary{
