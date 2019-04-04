@@ -5,7 +5,9 @@
 
 
 <div class="wrapper" *ngIf="navBars" >
-
+    <div class="ajax-loader">
+        <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gears-animation-13-2.gif" class="img-responsive" />
+     </div>
   <header class="main-header">
 
     <!-- Logo -->
@@ -106,7 +108,7 @@
                 <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i> Host Details</a></li>                
               </ul>
             </li>
-            <li><a href=""><i class="fa fa-server"></i> Server Status</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-server"></i> Server Status</a></li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-database"></i>
@@ -120,11 +122,11 @@
                 <li><a routerLink="resetPass"><i class="fa fa-key"></i> Reset DB Password</a></li>                     
               </ul>
             </li>
-            <li><a routerLink=""><i class="fa fa-refresh"></i> Application Restart</a></li>
+            <li><a routerLink="serverRestart"><i class="fa fa-refresh"></i> Application Status</a></li>
           </ul>
         </li>
         <li>
-          <a href="pages/widgets.html">
+          <a routerLink="commingSoon">
             <i class="fa fa-bar-chart"></i> <span>Monthly Statistic</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -143,10 +145,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a routerLink=""><i class="fa fa-plus-circle"></i> CMT Queue Creation</a></li>
-            <li><a routerLink=""><i class="fa fa-info-circle"></i> CMT Queue Status</a></li>
-            <li><a routerLink=""><i class="fa fa-print"></i> Printer Addition</a></li>
-            <li><a routerLink=""><i class="fa fa-envelope"></i> Email Monitoring</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-plus-circle"></i> CMT Queue Creation</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-info-circle"></i> CMT Queue Status</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-print"></i> Printer Addition</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-envelope"></i> Email Monitoring</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -158,9 +160,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a routerLink=""><i class="fa fa-calendar"></i> Event Report</a></li>
-            <li><a routerLink=""><i class="fa fa-file"></i> Incident Report</a></li>           
-            <li><a routerLink=""><i class="fa fa-users"></i> Available Shift Resources</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-calendar"></i> Event Report</a></li>
+            <li><a routerLink="commingSoon"><i class="fa fa-file"></i> Incident Report</a></li>           
+            <li><a routerLink="commingSoon"><i class="fa fa-users"></i> Available Shift Resources</a></li>
           </ul>
         </li>                                    
       </ul>

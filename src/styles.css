@@ -13,14 +13,14 @@
     color:rgb(95, 95, 95)  !important;
     padding: 7px;
     }
-table .fa:hover {
+table a:hover {
     background-color:rgb(95, 95, 95)  !important;
     color:white !important;
     border-radius: 5px;
     box-shadow: 4px 4px #999;
     }
     
-    table .fa:active {
+    table a:active {
     background-color: #3e8e41;
     box-shadow: 2px 2px #666;
     transform: translateY(2px);

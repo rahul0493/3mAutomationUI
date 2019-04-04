@@ -13,6 +13,8 @@ import { HostDetailsComponent } from './host-details/host-details.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { DbConnectionComponent } from './db-connection/db-connection.component';
+import { ServerRestartComponent } from './server-restart/server-restart.component';
+import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { DbConnectionComponent } from './db-connection/db-connection.component';
     HostDetailsComponent,
     NewPasswordComponent,
     ResetPasswordComponent,
-    DbConnectionComponent  
+    DbConnectionComponent,
+    ServerRestartComponent,
+    CommingSoonComponent  
   ],
   imports: [
     BrowserModule,

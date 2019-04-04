@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import {formatDate } from '@angular/common';
 
 declare var jquery:any;
@@ -8,10 +8,14 @@ declare var Chart:any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers:[]
 })
 
 export class HomeComponent implements OnInit {
+
+  ngAfterViewInit(){    
+  }
 date:String;
   constructor() { }
   incident=[{
@@ -181,7 +185,8 @@ date:String;
     // You can switch between pie and douhnut using the method below.
     pieChart.Pie(PieData, pieOptions);
   }
-  ngOnInit() {
+  ngOnInit() {   
+    //$.getScript('../assets/js/adminlte.min.js');    
     this.date=formatDate(new Date(), 'dd MMM, yyyy.', 'en-US', '+0530');
     setTimeout(()=>{
      for(var i=0;i<this.incident.length;i++){

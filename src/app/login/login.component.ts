@@ -49,7 +49,7 @@ get f() { return this.loginForm.controls; }
 onSubmit() {
     console.log("login");
     this.submitted = true;
-
+  //this.router.navigate(['']); 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
         return;
@@ -68,6 +68,7 @@ onSubmit() {
               }
               else{                
                 this.router.navigate(['']);
+                window.location.reload();
               }     
               this.profileServiceService.setName(sessionStorage.getItem('currentUser'));   
             },
