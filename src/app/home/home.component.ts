@@ -1,6 +1,7 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import {formatDate } from '@angular/common';
 
+
 declare var jquery:any;
 declare var bootbox:any;
 declare var $ :any;
@@ -192,7 +193,7 @@ date:String;
      for(var i=0;i<this.incident.length;i++){
       this.createPieChart(this.incident[i].id,this.incident[i].PieData);
      }
-    },60);
+    },100);
   }
 
 }

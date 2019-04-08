@@ -36,6 +36,7 @@ navBars:Boolean;
       else{
         this.profileName=res.displayName;
         this.navBars=true;
+        
       }
     });
     } 
