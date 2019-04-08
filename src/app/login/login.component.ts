@@ -68,6 +68,7 @@ onSubmit() {
               }
               else{                
                 this.router.navigate(['']);
+                window.location.reload();
               }     
               this.profileServiceService.setName(sessionStorage.getItem('currentUser'));   
             },
