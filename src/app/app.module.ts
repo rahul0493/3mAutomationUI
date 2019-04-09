@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { JwtInterceptorsService } from './auth/jwt-interceptors.service';
+
+
+import { SpinnerInterceptorService } from './auth/spinner-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,7 +18,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { DbConnectionComponent } from './db-connection/db-connection.component';
 import { ServerRestartComponent } from './server-restart/server-restart.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
-
+import {SpinnerService} from './auth/spinner.service';
 
 @NgModule({
   declarations: [
@@ -35,10 +38,12 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
     HttpModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorsService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true },
+    SpinnerService
     
   ],
   bootstrap: [AppComponent]

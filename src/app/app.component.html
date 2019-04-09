@@ -1,6 +1,11 @@
 
   <div *ngIf="!navBars">
-    <router-outlet></router-outlet>    
+    <router-outlet></router-outlet>   
+    <div *ngIf="isLoading | async" class="overlay">
+      <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+      </mat-progress-spinner>
+    </div>
+     
   </div>       
 
 
@@ -11,7 +16,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b style="color:red">3M</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -103,9 +108,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a routerLink="newPass/new"><i class="fa fa-lock"></i> New Password</a></li>
-                <li><a routerLink="changPass/change"><i class="fa fa-eye"></i> Change Password</a></li>
-                <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i> Host Details</a></li>                
+                <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Server Property File</a></li>
+                <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Change Server Property File</a></li>
+                <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>Host Details</a></li>                
               </ul>
             </li>
             <li><a routerLink="commingSoon"><i class="fa fa-server"></i> Server Status</a></li>

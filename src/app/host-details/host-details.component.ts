@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators ,FormBuilder} from '@angular/forms';
 import {HostDetailAPIsService} from '../APIs/host-detail-apis.service';
+
+
 import {Router} from '@angular/router';
 
 declare var jquery:any;
@@ -19,9 +21,11 @@ submitted = false;
 btnName:String;
 loading = false;
 hostForm: FormGroup;
-  constructor(private router:Router,private hostApi:HostDetailAPIsService, private formBuilder: FormBuilder,) { }
+public visibility: boolean = false;
+  constructor(private router:Router,private hostApi:HostDetailAPIsService, private formBuilder: FormBuilder) { }
   
-  ngOnInit() {  
+  ngOnInit() {
+
     this.evironmentList=[];
   //   this.hostForm = this.formBuilder.group({
   //     environmentName: ['', Validators.required]

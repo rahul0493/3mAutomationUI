@@ -20,6 +20,7 @@ export class NewPasswordComponent implements OnInit {
   submitBtn:String;
   environmentName:String;
   updatePass:Boolean;
+  visible:Boolean;
   constructor(private route:Router,private newPassApi:NewPassAPIsService,private routeParams:ActivatedRoute) { 
     
   }
@@ -85,6 +86,7 @@ export class NewPasswordComponent implements OnInit {
       console.log(res);
       this.hostDetailsDiv=true;
       this.submitBtn="Save";
+      this.visible=false;
       //this.environmentName=env;
     });
       }
@@ -96,9 +98,10 @@ export class NewPasswordComponent implements OnInit {
           console.log(res);
           this.hostDetailsDiv=true;
           this.submitBtn="Change Server Files";
+          this.visible=true;
           }
           else{
-            this.hostDetailsDiv=false;
+            this.hostDetailsDiv=false;            
             bootbox.alert("No record found.Please add it from new password page");
           }
         });

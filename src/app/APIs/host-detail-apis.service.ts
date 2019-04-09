@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+//import { SpinnerService } from '../auth/spinner.service';
 import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HostDetailAPIsService {
+  public visibility: boolean = false;
   headers= new Headers(JSON.parse(sessionStorage.getItem("headers")));
  
   constructor(private http:Http) { }
 
+ 
   getEnvironmentList(){
     return this.http.get(environment.apiUrl+'/host/getAllHostDetails',{headers:this.headers})
     .map(res=>res.json());

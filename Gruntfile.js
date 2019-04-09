@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                target: {
                    options: {
                        war_dist_folder: 'D:/', /* Folder where to generate the WAR. */
-                       war_name: 'sample' ,                   /* The name fo the WAR file (.war will be the extension) */
+                       war_name: 'threeM' ,                   /* The name fo the WAR file (.war will be the extension) */
                        webxml_welcome: 'index.html',
                        webxml_display_name: 'Grunt WAR',
                        webxml_mime_mapping: [ { extension: 'woff', mime_type: 'application/font-woff' } ]
