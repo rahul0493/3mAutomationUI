@@ -31,11 +31,11 @@ export class NewPasswordComponent implements OnInit {
       //console.log(params) 
       if(params.page=="new"){
         this.updatePass=false;
-        this.title="New Password";
+        this.title="Read Property File";
       }
       else{
         this.updatePass=true;
-        this.title="Change Password";
+        this.title="Update Property File";
       }
     });
     

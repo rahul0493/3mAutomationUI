@@ -1,10 +1,10 @@
 
   <div *ngIf="!navBars">
     <router-outlet></router-outlet>   
-    <div *ngIf="isLoading | async" class="overlay">
+    <!-- <div *ngIf="isLoading | async" class="overlay">
       <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
       </mat-progress-spinner>
-    </div>
+    </div> -->
      
   </div>       
 
@@ -18,9 +18,9 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b style="color:red">3M</b></span>
+      <span class="logo-mini" style="font-size: 30px"><b style="color:red">3M</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b style="color:red">3M</b> Dashboard</span>
+      <span class="logo-lg" ><b style="color:red"><span style="font-size: 40px">3M </span></b> <span>Dashboard</span></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -33,7 +33,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="nav-item">
-            <img src="../assets//img/quinnox.png" class="img-responsive">
+            <img src="../dashboard3M/assets/img/quinnox.png" class="img-responsive">
           </li>
           <li class="nav-item">
             <a class="nav-link userName"><i class="fa fa-user" aria-hidden="true"></i> {{profileName}}</a>
@@ -108,9 +108,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Server Property File</a></li>
-                <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Change Server Property File</a></li>
-                <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>Host Details</a></li>                
+                <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Property File</a></li>
+                <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Update Property File</a></li>
+                <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>                
               </ul>
             </li>
             <li><a routerLink="commingSoon"><i class="fa fa-server"></i> Server Status</a></li>

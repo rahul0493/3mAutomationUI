@@ -455,7 +455,7 @@
      left: 0;
      padding-top: 50px;
      min-height: 100%;
-     width: 230px;
+     width: 250px;
      z-index: 810;
      -webkit-transition: -webkit-transform .3s ease-in-out, width .3s ease-in-out;
      -moz-transition: -moz-transform .3s ease-in-out, width .3s ease-in-out;
@@ -682,7 +682,7 @@
      .sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu>li:hover>.treeview-menu {
          display: block !important;
          position: absolute;
-         width: 180px;
+         width: 240px;
          left: 50px
      }
      .sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu>li:hover>a>span {

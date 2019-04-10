@@ -38,4 +38,7 @@ table a:hover {
       .modal-backdrop {
           z-index:0 !important;
       }
-    
+      body{
+        font-family: "Segoe UI" !important; 
+        font-weight: lighter; 
+    }

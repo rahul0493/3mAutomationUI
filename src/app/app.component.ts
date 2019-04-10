@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {ProfileServiceService} from './APIs/profile-service.service';
-import {SpinnerService} from './auth/spinner.service';
+// import {SpinnerService} from './auth/spinner.service';
 
 import { Subject } from 'rxjs';
 import { Idle } from 'idlejs/dist';
@@ -30,12 +30,12 @@ const idle = new Idle()
 export class AppComponent {
 profileName:String;
 navBars:Boolean;
-color = 'primary';
-mode = 'indeterminate';
-value = 50;
-isLoading: Subject<boolean> = this.Spinner.isLoading;
+// color = 'primary';
+// mode = 'indeterminate';
+// value = 50;
+// isLoading: Subject<boolean> = this.Spinner.isLoading;
 
-  constructor(private ProfileServiceService:ProfileServiceService,private router:Router,private Spinner:SpinnerService) { 
+  constructor(private ProfileServiceService:ProfileServiceService,private router:Router) { 
     this.ProfileServiceService.setNameMethodCalled.subscribe((res)=>{
       if(res==null){      
       this.navBars=false;

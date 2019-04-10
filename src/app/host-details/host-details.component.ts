@@ -80,6 +80,7 @@ public visibility: boolean = false;
     this.hostApi.createEnvironment(data)
     .subscribe(res=>{
       this.ngOnInit();
+        $('#myModal').modal('hide');
         bootbox.alert('<label>Created Succesfully</label>');   
      })
   }

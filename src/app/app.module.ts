@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 import { SpinnerInterceptorService } from './auth/spinner-interceptor.service';
@@ -39,7 +38,7 @@ import {SpinnerService} from './auth/spinner.service';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressSpinnerModule
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true },
