@@ -18,7 +18,7 @@ const idle = new Idle()
   .do(() => {
      console.log('IDLE');
      sessionStorage.clear();
-      this.ProfileServiceService.setName(sessionStorage.getItem('currentUser'));  
+     this.navBars=false;
       this.router.navigate(['login']);    
       
   })

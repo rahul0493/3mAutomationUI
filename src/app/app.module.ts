@@ -18,6 +18,8 @@ import { DbConnectionComponent } from './db-connection/db-connection.component';
 import { ServerRestartComponent } from './server-restart/server-restart.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 import {SpinnerService} from './auth/spinner.service';
+import { ServerStatusComponent } from './server-status/server-status.component';
+import { AdminRoleComponent } from './admin-role/admin-role.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {SpinnerService} from './auth/spinner.service';
     ResetPasswordComponent,
     DbConnectionComponent,
     ServerRestartComponent,
-    CommingSoonComponent  
+    CommingSoonComponent,
+    ServerStatusComponent,
+    AdminRoleComponent  
   ],
   imports: [
     BrowserModule,

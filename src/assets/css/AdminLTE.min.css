@@ -455,7 +455,7 @@
      left: 0;
      padding-top: 50px;
      min-height: 100%;
-     width: 250px;
+     width: 230px;
      z-index: 810;
      -webkit-transition: -webkit-transform .3s ease-in-out, width .3s ease-in-out;
      -moz-transition: -moz-transform .3s ease-in-out, width .3s ease-in-out;

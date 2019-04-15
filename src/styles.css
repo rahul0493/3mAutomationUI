@@ -40,5 +40,8 @@ table a:hover {
       }
       body,button span{
         font-family: "Segoe UI" !important; 
-        font-weight: lighter; 
+        /* font-weight: lighter;  */
+    }
+    .alert {
+      padding: 5px !important;
     }

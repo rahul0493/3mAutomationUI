@@ -17,18 +17,23 @@ export class NewPasswordComponent implements OnInit {
   environmentList:any;
   hostDetailsDiv:Boolean;
   environment:String;
+  
   submitBtn:String;
   environmentName:String;
   updatePass:Boolean;
   fileList:any;
   fileName:any;
   visible:Boolean;
+  fileDrp:Boolean;
+  noFile:Boolean;
   constructor(private route:Router,private newPassApi:NewPassAPIsService,private routeParams:ActivatedRoute) { 
     
   }
 
   ngOnInit() {
     this.hostDetailsDiv=false;
+    this.fileDrp=false;
+    this.noFile=false;
     this.routeParams.params.subscribe( params =>{
       //console.log(params) 
       if(params.page=="new"){
@@ -51,6 +56,7 @@ export class NewPasswordComponent implements OnInit {
     
        
     this.environment="pleaseSelect";
+    this.fileName="pleaseSelect"
   }
 
   saveNewPass(){
@@ -82,17 +88,25 @@ export class NewPasswordComponent implements OnInit {
       
         this.newPassApi.getFileName(env[0])
     .subscribe(res=>{
+      if(res.length<=0){
+        this.noFile=true;
+        this.fileDrp=false;
+      }
+      else{
+        this.noFile=false;    
+        this.fileDrp=true;    
+      }
       this.fileList=res;
       console.log(res);
       this.hostDetailsDiv=false;
       this.submitBtn="Save";
       this.visible=false;
+      
       //this.environmentName=env;
     });
   });
 }
-selectFile
-  (){
+selectFile(){
     var env=this.environment.split(',');
     this.environmentName=env[1];
     this.routeParams.params.subscribe( params =>{
@@ -104,6 +118,7 @@ selectFile
       this.hostDetailsDiv=true;
       this.submitBtn="Save";
       this.visible=false;
+      
       //this.environmentName=env;
     });
       }
@@ -116,6 +131,7 @@ selectFile
           this.hostDetailsDiv=true;
           this.submitBtn="Change Server Files";
           this.visible=true;
+          
           }
           else{
             this.hostDetailsDiv=false;            

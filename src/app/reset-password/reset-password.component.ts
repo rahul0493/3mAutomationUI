@@ -37,19 +37,19 @@ resetPass(id,data){
     
      this.resetPassApi.resetPassword(data)
      .subscribe(res=>{
-       alert(res);
+      bootbox.alert("Password Resetted Successfully");
        this.ngOnInit();
      })
 });
 }else{
-  alert('password not matched')
+  bootbox.alert('Password not Matched')
 
 }
 }
 checkStatus(id){
   this.resetPassApi.checkStatusById(id)
   .subscribe(res=>{
-    alert(res);
+    bootbox.alert(res);
     
   })
 }

@@ -34,7 +34,8 @@
               
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",  
+              "./node_modules/jquery/dist/jquery.min.js", 
+              "src/assets/js/propper.min.js",    
               "src/bower_components/bootstrap/dist/js/bootstrap.min.js",                           
               "src/assets/js/adminlte.min.js",                
               "src/bower_components/chart.js/Chart.js",                                                
