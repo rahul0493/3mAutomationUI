@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class NewPassAPIsService {
+  
 
   constructor(private http:Http) { }
   headers= new Headers(JSON.parse(sessionStorage.getItem("headers")));
@@ -16,41 +17,56 @@ export class NewPassAPIsService {
     .map(res=>res.json());
   }
 
-  readServerFile(id){
-    return this.http.get(environment.apiUrl+'/newPassword/readServerFile/'+id,{headers:this.headers})
+  readServerFile(id,fileName){
+    return this.http.get(environment.apiUrl+'/newPassword/readServerFile/'+id,{headers:this.headers,params:{
+      fileName:fileName
+    }})
     .map(res=>res.json());
   }
 
-  getNewPasswordList(id){
-    return this.http.get(environment.apiUrl+'/newPassword/getAllNewPassword/'+id,{headers:this.headers})
+  getNewPasswordList(id,fileName){
+    return this.http.get(environment.apiUrl+'/newPassword/getAllNewPassword/'+id,{headers:this.headers,params:{
+      fileName:fileName
+    }})
     .map(res=>res.json());
   }
   
-  savePass(data){    
-      return this.http.post(environment.apiUrl+'/newPassword/saveNewPassword',data,{headers:this.headers})
+  savePass(data,fileName){    
+      return this.http.post(environment.apiUrl+'/newPassword/saveNewPassword',data,{headers:this.headers,params:{
+        fileName:fileName
+      }})
       .map(res=>res.text);  
   
   }
-  changeServerFile(data){    
-    return this.http.post(environment.apiUrl+'/ChangePassword/changePasswordbyId/'+data.id,data,{headers:this.headers})
+  changeServerFile(data,fileName){    
+    return this.http.post(environment.apiUrl+'/ChangePassword/changePasswordbyId/'+data.id,data,{headers:this.headers,params:{
+      fileName:fileName
+    }})
     .map(res=>res.text);  
 
 }
 
-backupServerFile(data){    
-  return this.http.post(environment.apiUrl+'/ChangePassword/createBackup/'+data.id,data,{headers:this.headers})
+backupServerFile(data,fileName){    
+  return this.http.post(environment.apiUrl+'/ChangePassword/createBackup/'+data.id,data,{headers:this.headers, params:{
+    fileName:fileName
+  }})
   .map(res=>res.text);  
 
 }
 
 crontabBackup(data){    
-  return this.http.post(environment.apiUrl+'/ChangePassword/croneBackUp/'+data.id,data,{headers:this.headers})
+  return this.http.post(environment.apiUrl+'/ChangePassword/cronBackUp/'+data.id,data,{headers:this.headers})
   .map(res=>res.text);  
 
 }
 createCrontab(data){    
-  return this.http.post(environment.apiUrl+'/ChangePassword/createCroneTab/'+data.id,data,{headers:this.headers})
+  return this.http.post(environment.apiUrl+'/ChangePassword/createCronTab/'+data.id,data,{headers:this.headers})
   .map(res=>res.text);  
 
 }
+getFileName(id): any {
+  return this.http.get(environment.apiUrl+'/newPassword/getAllFileName/'+id,{headers:this.headers})
+    .map(res=>res.json());
+}
+
 }
