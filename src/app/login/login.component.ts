@@ -73,7 +73,7 @@ onSubmit() {
               this.profileServiceService.setName(sessionStorage.getItem('currentUser'));   
             },
             error => {
-                this.error = error;
+                this.error = "Some Internal Error";
                 this.loading = false;
             });
 }
