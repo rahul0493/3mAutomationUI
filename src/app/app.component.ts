@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { Idle } from 'idlejs/dist';
 //import { setTimeout } from 'timers';
 import { timeout } from 'rxjs/operators';
+import { NgNoValidate } from '@angular/forms/src/directives/ng_no_validate_directive';
 declare var jquery:any;
 declare const $: any;
 declare var bootbox:any;
@@ -16,8 +17,10 @@ const idle = new Idle()
   .within(10)
   .do(() => {
      console.log('IDLE');
-     sessionStorage.clear();      
-     window.location.href = "/login";     
+     sessionStorage.clear();
+      this.ProfileServiceService.setName(sessionStorage.getItem('currentUser'));  
+      this.router.navigate(['login']);    
+      
   })
   .start();
 

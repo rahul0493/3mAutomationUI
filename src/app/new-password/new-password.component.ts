@@ -20,6 +20,8 @@ export class NewPasswordComponent implements OnInit {
   submitBtn:String;
   environmentName:String;
   updatePass:Boolean;
+  fileList:any;
+  fileName:any;
   visible:Boolean;
   constructor(private route:Router,private newPassApi:NewPassAPIsService,private routeParams:ActivatedRoute) { 
     
@@ -56,7 +58,7 @@ export class NewPasswordComponent implements OnInit {
       //console.log(params) 
       if(params.page=="new"){
     console.log(this.environmentList);
-    this.newPassApi.savePass(this.environmentList)
+    this.newPassApi.savePass(this.environmentList,this.fileName)
     .subscribe(res=>{
       bootbox.alert("Saved Succesfully");
     })
@@ -64,7 +66,7 @@ export class NewPasswordComponent implements OnInit {
   else{
     bootbox.confirm("<label>Are you sure, you want to update Server Files</label>",(result)=>{
       if(result==true){  
-    this.newPassApi.changeServerFile(this.environmentList)
+    this.newPassApi.changeServerFile(this.environmentList,this.fileName)
     .subscribe(res=>{
       bootbox.alert("Saved Succesfully");
     })
@@ -73,14 +75,29 @@ export class NewPasswordComponent implements OnInit {
   }
 });
   }
-  
-
   selectEnv(){
     var env=this.environment.split(',');
     this.environmentName=env[1];
     this.routeParams.params.subscribe( params =>{
+      
+        this.newPassApi.getFileName(env[0])
+    .subscribe(res=>{
+      this.fileList=res;
+      console.log(res);
+      this.hostDetailsDiv=false;
+      this.submitBtn="Save";
+      this.visible=false;
+      //this.environmentName=env;
+    });
+  });
+}
+selectFile
+  (){
+    var env=this.environment.split(',');
+    this.environmentName=env[1];
+    this.routeParams.params.subscribe( params =>{
       if(params.page=="new"){
-        this.newPassApi.readServerFile(env[0])
+        this.newPassApi.readServerFile(env[0],this.fileName)
     .subscribe(res=>{
       this.environmentList=res;
       console.log(res);
@@ -91,7 +108,7 @@ export class NewPasswordComponent implements OnInit {
     });
       }
       else{
-        this.newPassApi.getNewPasswordList(env[0])
+        this.newPassApi.getNewPasswordList(env[0],this.fileName)
         .subscribe(res=>{
           if(res.id!=0){
           this.environmentList=res;
@@ -112,7 +129,7 @@ export class NewPasswordComponent implements OnInit {
   backup(){
     bootbox.confirm("<label>Are you sure, you want to take Server File Backup</label>",(result)=>{
       if(result==true){  
-    this.newPassApi.backupServerFile(this.environmentList)
+    this.newPassApi.backupServerFile(this.environmentList,this.fileName)
     .subscribe(res=>{
       bootbox.alert("File Backup done succesfully");
     })
