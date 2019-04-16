@@ -45,3 +45,8 @@ table a:hover {
     .alert {
       padding: 5px !important;
     }
+
+    table th{
+      background-color: #3c8dbc;
+      color:white;
+    }

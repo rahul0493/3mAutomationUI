@@ -1,3 +1,4 @@
- .fa:hover{
-    font-size: 25px;
+ .badge:hover{
+    font-size: 13px;
+    cursor: grab;
 }

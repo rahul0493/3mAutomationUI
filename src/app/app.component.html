@@ -87,7 +87,7 @@
             <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
-        <li class="treeview">
+        <li class="treeview" *ngIf="isNgg">
           <a href="#">
             <i class="fa fa-gears"></i>
             <span>Operations Team Task</span>
@@ -170,7 +170,7 @@
             <li><a routerLink="commingSoon"><i class="fa fa-users"></i> Available Shift Resources</a></li>
           </ul>
         </li>     
-        <li class="treeview">
+        <li class="treeview" *ngIf="isAdmin">
             <a routerLink="roleAccess">
               <i class="fa fa-universal-access"></i> <span>User Role</span>
               <span class="pull-right-container">
