@@ -125,7 +125,7 @@ show:Boolean;
   logout(){
     bootbox.confirm({
     size: "small",
-    message: "<label>Are you sure, you want to logout</label>", 
+    message: "Are you sure, you want to logout", 
   callback: (result)=>{ 
     if(result==true){  
       sessionStorage.clear();
