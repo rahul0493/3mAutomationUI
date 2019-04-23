@@ -6,7 +6,8 @@ export const environment = {
   production: false,
 
    //apiUrl: 'http://threem.quinnox.com:8081',
-  apiUrl: 'http://10.30.11.161:8081'
+  apiUrl: 'http://10.30.11.161:8081',
+  //apiUrl: 'http://10.30.16.133:8081',
   //apiUrl: 'http://localhost:8081'
 };
 

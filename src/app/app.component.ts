@@ -3,12 +3,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {ProfileServiceService} from './APIs/profile-service.service';
 // import {SpinnerService} from './auth/spinner.service';
 
+
 import { Subject } from 'rxjs';
 import { Idle } from 'idlejs/dist';
 //import { setTimeout } from 'timers';
 import { timeout } from 'rxjs/operators';
 import { NgNoValidate } from '@angular/forms/src/directives/ng_no_validate_directive';
 import { longStackSupport } from 'q';
+
+import {SpinnerService} from './auth/spinner.service';
+import {LoaderState } from'./auth/loaderState.model';
+import { Subscription } from 'rxjs';
+
 declare var jquery:any;
 declare const $: any;
 declare var bootbox:any;
@@ -37,12 +43,18 @@ profileName:String;
 navBars:Boolean;
 isAdmin:Boolean;
 isNgg:Boolean;
+isEai:Boolean;
+isTransport:Boolean;
+isDom:Boolean;
+show:Boolean;
 // color = 'primary';
 // mode = 'indeterminate';
 // value = 50;
 // isLoading: Subject<boolean> = this.Spinner.isLoading;
 
-  constructor(private ProfileServiceService:ProfileServiceService,private router:Router) { 
+
+  constructor(private ProfileServiceService:ProfileServiceService,private router:Router,private spinner:SpinnerService) { 
+    this.show=false;
     this.ProfileServiceService.setNameMethodCalled.subscribe((res)=>{
       if(res==null){      
       this.navBars=false;
@@ -53,19 +65,32 @@ isNgg:Boolean;
         
       }
     });
+    this.spinner.loaderState
+    .subscribe((state: LoaderState) => {
+      this.show = state.show;
+      //console.log('spinned');
+    });
     } 
 
   title = 'dashboard3M'; 
   
-  ngOnInit(){
+  ngOnInit(){  
+    
     this.ProfileServiceService.setName(sessionStorage.getItem('currentUser')); 
     var roles=JSON.parse(sessionStorage.getItem('currentUser')); 
+    if(roles!=null){
     roles=roles.roles; 
     var resAdmin=roles.find(x => x.role === "ADMIN"); 
     var resNgg=roles.find(x => x.role === "NGG_USER");
+    var resEai=roles.find(x => x.role === "EAI_USER");
+    var resTran=roles.find(x => x.role === "TRANSPORT_USER");
+    var resDom=roles.find(x => x.role === "DOM_USER");
     if(resAdmin!=undefined){
       this.isAdmin=true;
       this.isNgg=true;
+      this.isDom=true;
+      this.isEai=true;
+      this.isTransport=true;
     }
     else{
       this.isAdmin=false;
@@ -76,7 +101,25 @@ isNgg:Boolean;
     else{
       this.isNgg=false;
     }
-
+    if(resDom!=undefined){
+      this.isDom=true;
+    }
+    else{
+      this.isDom=false;
+    }
+    if(resTran!=undefined){
+      this.isTransport=true;
+    }
+    else{
+      this.isTransport=false;
+    }
+    if(resEai!=undefined){
+      this.isEai=true;
+    }
+    else{
+      this.isEai=false;
+    }
+  }
   }
 
   logout(){

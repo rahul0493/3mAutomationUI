@@ -18,7 +18,7 @@ export class ServerRestartComponent implements OnInit {
 
   ngOnInit() {
     this.serverRestartDetailsDiv=true;
-    this.title="Application Status";    
+    this.title="App Restart";    
     this.newPassApi.getEnvironmentList()
     .subscribe(res=>{
       console.log(res);

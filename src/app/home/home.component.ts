@@ -1,5 +1,6 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import {formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 declare var jquery:any;
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   ngAfterViewInit(){    
   }
 date:String;
-  constructor() { }
+  constructor(private router:Router) { }
   incident=[{
     "id":"daily",
     "PieData": [

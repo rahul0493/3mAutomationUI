@@ -3,6 +3,7 @@ import {Http,Headers} from '@angular/http';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,26 +11,26 @@ import 'rxjs/add/operator/map';
 })
 
 export class ResetPassAPIsService {
-  headers= new Headers(JSON.parse(sessionStorage.getItem("headers")));
-  constructor(private http:Http) { }
+  headers= new HttpHeaders(JSON.parse(sessionStorage.getItem("headers")));
+  constructor(private http:HttpClient) { }
   
-  getAllConn(){
+  getAllConn(): Observable<any>{
     return this.http.get(environment.apiUrl+'/ResetPassword/getAllConnectionDetails',{headers:this.headers})
-    .map(res=>res.json());
+    .map(res=>res);
   }
 
-  updateConn(updateDetail){
+  updateConn(updateDetail): Observable<any>{
    
     return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers})
-    .map(res=>res.text);
+    .map(res=>res);
   }
   
-  resetPassword(data){    
+  resetPassword(data): Observable<any>{    
     return this.http.post(environment.apiUrl+'/ResetPassword/ResetDataBasePassword',data,{headers:this.headers})
-    .map(res=>res.text());
+    .map(res=>res);
   }
-  checkStatusById(id){    
+  checkStatusById(id): Observable<any>{    
     return this.http.post(environment.apiUrl+'/ResetPassword/checkDbPasswordStatus',id,{headers:this.headers})
-    .map(res=>res.text());
+    .map(res=>res);
   }
 }

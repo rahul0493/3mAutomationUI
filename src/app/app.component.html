@@ -1,18 +1,15 @@
 
   <div *ngIf="!navBars">
-    <router-outlet></router-outlet>   
-    <!-- <div *ngIf="isLoading | async" class="overlay">
-      <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
-      </mat-progress-spinner>
-    </div> -->
-     
+    <router-outlet></router-outlet>        
   </div>       
 
 
 <div class="wrapper" *ngIf="navBars" >
-    <div class="ajax-loader">
-        <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gears-animation-13-2.gif" class="img-responsive" />
-     </div>
+    <div class="loader-overlay" [hidden]="!show">
+        <div  class="ajax-loader">
+            <img src="http://www.loadbalancer.org/public/images/loader.gif" class="img-responsive" />
+        </div>
+      </div>
   <header class="main-header">
 
     <!-- Logo -->
@@ -77,15 +74,11 @@
         <!-- <li class="header">MAIN NAVIGATION</li> -->
         <li class="active treeview menu-open">
           <a routerLink="">
-            <i class="fa fa-dashboard"></i> <span>Monitoring</span>
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
-          </a>
-          <!-- <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul> -->
+          </a>        
         </li>
         <li class="treeview" *ngIf="isNgg">
           <a href="#">
@@ -108,13 +101,70 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Property File</a></li>
-                <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Update Property File</a></li>
-                <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>                
+                  <li class="treeview" *ngIf="isNgg">
+                      <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>NGG</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Property File</a></li>
+                        <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Update Property File</a></li>
+                        <li *ngIf="isAdmin"><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>                
+                      </ul>
+                    </li>
+                    <li class="treeview" *ngIf="isEai">
+                        <a href="#">
+                          <i class="fa fa-etsy"></i>
+                          <span>EAI</span>
+                          <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a routerLink="commingSoon"><i class="fa fa-text-width"></i> Test</a></li>
+                          <!-- <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Property File</a></li>
+                          <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Update Property File</a></li>
+                          <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>                 -->
+                        </ul>
+                      </li>
+                      <li class="treeview" *ngIf="isTransport">
+                          <a href="#">
+                            <i class="fa fa-road"></i>
+                            <span>Transport</span>
+                            <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                          </a>
+                          <ul class="treeview-menu">
+                              <li><a routerLink="commingSoon"><i class="fa fa-text-width"></i>Test</a></li>
+                            <!-- <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Property File</a></li>
+                            <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Update Property File</a></li>
+                            <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>                 -->
+                          </ul>
+                        </li>
+                        <li class="treeview" *ngIf="isDom">
+                            <a href="#">
+                              <i class="fa fa-snowflake-o"></i>
+                              <span>DOM</span>
+                              <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                              </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a routerLink="commingSoon"><i class="fa fa-text-width"></i>Test</a></li>
+                              <!-- <li><a routerLink="newPass/new"><i class="fa fa-lock"></i>Read Property File</a></li>
+                              <li><a routerLink="changPass/change"><i class="fa fa-eye"></i>Update Property File</a></li>
+                              <li><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>                 -->
+                            </ul>
+                          </li>
+                          
               </ul>
             </li>
-            <li><a routerLink="serverStatus"><i class="fa fa-server"></i> Server Status</a></li>
-            <li class="treeview">
+           
+            <li class="treeview" *ngIf="isAdmin">
               <a href="#">
                 <i class="fa fa-database"></i>
                 <span>DB Password Change</span>
@@ -127,7 +177,7 @@
                 <li><a routerLink="resetPass"><i class="fa fa-key"></i> Reset DB Password</a></li>                     
               </ul>
             </li>
-            <li><a routerLink="serverRestart"><i class="fa fa-refresh"></i> Application Status</a></li>
+            <li *ngIf="isAdmin"><a routerLink="serverRestart"><i class="fa fa-refresh"></i> App Restart </a></li>
           </ul>
         </li>
         <li>
@@ -142,6 +192,19 @@
           </a>
         </li>
         <li class="treeview">
+            <a href="#">
+              <i class="fa fa-desktop"></i>
+              <span>Monitoring</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a routerLink="serverStatus"><i class="fa fa-server"></i> Server Status</a></li>
+              <li><a routerLink="commingSoon"><i class="fa fa-envelope"></i> Email Monitoring</a></li>
+            </ul>
+          </li>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-tasks"></i>
             <span>Routine Task</span>
@@ -153,7 +216,7 @@
             <li><a routerLink="commingSoon"><i class="fa fa-plus-circle"></i> CMT Queue Creation</a></li>
             <li><a routerLink="commingSoon"><i class="fa fa-info-circle"></i> CMT Queue Status</a></li>
             <li><a routerLink="commingSoon"><i class="fa fa-print"></i> Printer Addition</a></li>
-            <li><a routerLink="commingSoon"><i class="fa fa-envelope"></i> Email Monitoring</a></li>
+            
           </ul>
         </li>
         <li class="treeview">
@@ -188,6 +251,9 @@
   </aside>
   <div class="content-wrapper">
     <router-outlet></router-outlet>
+    
+      
+      
 </div>
   <!-- <footer class="main-footer">
     <div class="pull-right hidden-xs">
