@@ -21,16 +21,16 @@ export class ResetPassAPIsService {
 
   updateConn(updateDetail): Observable<any>{
    
-    return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers})
+    return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers,responseType: 'text'})
     .map(res=>res);
   }
   
   resetPassword(data): Observable<any>{    
-    return this.http.post(environment.apiUrl+'/ResetPassword/ResetDataBasePassword',data,{headers:this.headers})
+    return this.http.post(environment.apiUrl+'/ResetPassword/ResetDataBasePassword',data,{headers:this.headers,responseType: 'text'})
     .map(res=>res);
   }
   checkStatusById(id): Observable<any>{    
-    return this.http.post(environment.apiUrl+'/ResetPassword/checkDbPasswordStatus',id,{headers:this.headers})
+    return this.http.post(environment.apiUrl+'/ResetPassword/checkDbPasswordStatus',id,{headers:this.headers,responseType: 'text'})
     .map(res=>res);
   }
 }

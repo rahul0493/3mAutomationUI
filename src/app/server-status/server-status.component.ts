@@ -26,55 +26,5 @@ serverStatusArr:any;
       });   
       }, 50);  
     })
-
-
-// this.serverStatusArr=[
-//   {
-//       "environmentId": 5,
-//       "environmentName": "env",
-//       "nodes": [
-//           {
-//               "nodeName": "nggapppr01",
-//               "nodeId": 12,
-//               "timestamp": 1555266302000,
-//               "healthStatus": [
-//                   {
-//                       "name": "Disk",
-//                       "percentage": 64,
-//                       "color": "#ffd01f"
-//                   },
-//                   {
-//                       "name": "Memory",
-//                       "percentage": 91.78,
-//                       "color": "#08da08"
-//                   }
-//               ],
-//               "appStatus": "PROD-SI-RUNNING"
-//           },
-//           {
-//               "nodeName": "nggapppr02",
-//               "nodeId": 13,
-//               "timestamp": 1555266302000,
-//               "healthStatus": [
-//                   {
-//                       "name": "Disk",
-//                       "percentage": 90,
-//                       "color": "#08da08"
-//                   },
-//                   {
-//                       "name": "Memory",
-//                       "percentage": 97.78,
-//                       "color": "red"
-//                   }
-//               ],
-//               "appStatus": "PROD-SI-STOPPED"
-//           }
-//       ]
-//   }
-// ];
-
-
-
-    
   }
 }

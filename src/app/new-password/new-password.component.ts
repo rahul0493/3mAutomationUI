@@ -70,7 +70,7 @@ export class NewPasswordComponent implements OnInit {
     })
   }
   else{
-    bootbox.confirm("<label>Are you sure, you want to update Server Files</label>",(result)=>{
+    bootbox.confirm("Are you sure, you want to update Server Files",(result)=>{
       if(result==true){  
     this.newPassApi.changeServerFile(this.environmentList,this.fileName)
     .subscribe(res=>{
@@ -143,7 +143,7 @@ selectFile(){
   }
 
   backup(){
-    bootbox.confirm("<label>Are you sure, you want to take Server File Backup</label>",(result)=>{
+    bootbox.confirm("Are you sure, you want to take Server File Backup",(result)=>{
       if(result==true){  
     this.newPassApi.backupServerFile(this.environmentList,this.fileName)
     .subscribe(res=>{
@@ -154,7 +154,7 @@ selectFile(){
   }
 
   crontabBackup(){
-    bootbox.confirm("<label>Are you sure, you want to take Crontab Backup & Remove from Server</label>",(result)=>{
+    bootbox.confirm("Are you sure, you want to take Crontab Backup & Remove from Server",(result)=>{
       if(result==true){  
     this.newPassApi.crontabBackup(this.environmentList)
     .subscribe(res=>{
@@ -165,7 +165,7 @@ selectFile(){
   }
 
   createCrontab(){
-    bootbox.confirm("<label>Are you sure, you want to create Crontab on Server</label>",(result)=>{
+    bootbox.confirm("Are you sure, you want to create Crontab on Server",(result)=>{
       if(result==true){  
     this.newPassApi.createCrontab(this.environmentList)
     .subscribe(res=>{

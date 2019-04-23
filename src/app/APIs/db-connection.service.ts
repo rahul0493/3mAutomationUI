@@ -17,13 +17,13 @@ export class DbConnectionService {
   }
 
     createConn(hostDetail): Observable<any>{
-      return this.http.post(environment.apiUrl+'/ResetPassword/saveConnectionDetails',hostDetail,{headers:this.headers})
+      return this.http.post(environment.apiUrl+'/ResetPassword/saveConnectionDetails',hostDetail,{headers:this.headers,responseType: 'text'})
       .map(res=>res);
     }
   
     updateConn(updateDetail): Observable<any>{
      
-      return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers})
+      return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers,responseType: 'text'})
       .map(res=>res);
     }
     
@@ -34,7 +34,7 @@ export class DbConnectionService {
   
     deleteConnById(id): Observable<any>{    
       let body=JSON.stringify({"id":id});
-      return this.http.delete(environment.apiUrl+'/ResetPassword/deleteConnectionDetailsById/'+id,{headers:this.headers})
+      return this.http.delete(environment.apiUrl+'/ResetPassword/deleteConnectionDetailsById/'+id,{headers:this.headers,responseType: 'text'})
       .map(res=>res);
     }
   }

@@ -18,7 +18,8 @@ export class UserRoleService {
   }
 
   updateUserRole(data): Observable<any>{
-    return this.http.post(environment.apiUrl+'/admin/updateUserRole',data,{headers:this.headers})
+    console.log(data);
+    return this.http.post(environment.apiUrl+'/admin/updateUserRole',data,{headers:this.headers,responseType: 'text'})
     .map(res=>res);
   }
 

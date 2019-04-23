@@ -54,19 +54,18 @@ updateUserRole(){
   var arrr = [];
   var data=this.userRoleArr;
   $("input[class=enableRole]:checked").each(function() {
-      var id = $(this).attr("id");
-      //var res = JSON.search(this.userRoleArr, '//*[empCode=' + id + ']');
-      var res=data.find(x => x.empCode === id);
-     // res = Object.assign({}, res);
+      var id = $(this).attr("id");      
+      var res=data.find(x => x.empCode === id);     
       arrr.push(res);
   });
- // console.log(arrr);
+ 
   this.userRoleServ.updateUserRole(arrr).
   subscribe((res)=>{
     console.log(JSON.stringify(res));
     this.ngOnInit();
     $('#submitRole input').addClass('hidden');
-    bootbox.alert("Updated Succesfully");
+  
+    bootbox.alert("<label>Updated Succesfully</label>");
   })
 }
 

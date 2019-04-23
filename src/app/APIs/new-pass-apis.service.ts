@@ -33,14 +33,14 @@ export class NewPassAPIsService {
   }
   
   savePass(data,fileName): Observable<any>{    
-      return this.http.post(environment.apiUrl+'/newPassword/saveNewPassword',data,{headers:this.headers,params:{
+      return this.http.post(environment.apiUrl+'/newPassword/saveNewPassword',data,{headers:this.headers,responseType: 'text',params:{
         fileName:fileName
       }})
       .map(res=>res);  
   
   }
   changeServerFile(data,fileName): Observable<any>{    
-    return this.http.post(environment.apiUrl+'/ChangePassword/changePasswordbyId/'+data.id,data,{headers:this.headers,params:{
+    return this.http.post(environment.apiUrl+'/ChangePassword/changePasswordbyId/'+data.id,data,{headers:this.headers,responseType: 'text',params:{
       fileName:fileName
     }})
     .map(res=>res);  
@@ -48,7 +48,7 @@ export class NewPassAPIsService {
 }
 
 backupServerFile(data,fileName): Observable<any>{    
-  return this.http.post(environment.apiUrl+'/ChangePassword/createBackup/'+data.id,data,{headers:this.headers, params:{
+  return this.http.post(environment.apiUrl+'/ChangePassword/createBackup/'+data.id,data,{headers:this.headers,responseType: 'text', params:{
     fileName:fileName
   }})
   .map(res=>res);  
@@ -56,12 +56,12 @@ backupServerFile(data,fileName): Observable<any>{
 }
 
 crontabBackup(data): Observable<any>{    
-  return this.http.post(environment.apiUrl+'/ChangePassword/cronBackUp/'+data.id,data,{headers:this.headers})
+  return this.http.post(environment.apiUrl+'/ChangePassword/cronBackUp/'+data.id,data,{headers:this.headers,responseType: 'text'})
   .map(res=>res);  
 
 }
 createCrontab(data): Observable<any>{    
-  return this.http.post(environment.apiUrl+'/ChangePassword/createCronTab/'+data.id,data,{headers:this.headers})
+  return this.http.post(environment.apiUrl+'/ChangePassword/createCronTab/'+data.id,data,{headers:this.headers,responseType: 'text'})
   .map(res=>res);  
 
 }

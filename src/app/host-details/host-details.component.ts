@@ -27,10 +27,14 @@ public visibility: boolean = false;
   ngOnInit() {
 
     this.evironmentList=[];
-  //   this.hostForm = this.formBuilder.group({
-  //     environmentName: ['', Validators.required]
-      
-  // });
+    function toggleIcon(e) {
+      $(e.target)
+          .prev('.panel-heading')
+          .find(".more-less")
+          .toggleClass('glyphicon-plus glyphicon-minus');
+  }
+  $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+  $('.panel-group').on('shown.bs.collapse', toggleIcon);
    
     
      this.hostApi.getEnvironmentList()
@@ -60,18 +64,6 @@ public visibility: boolean = false;
     }
   }
 
-
-  // onCreate(){
-  //   this.submitted = true;
-
-  //   // stop here if form is invalid
-  //   if (this.hostForm.invalid) {
-  //       return;
-  //   }
-  //   this.loading = true;
-  // }
-
-
   addEnvironment(){
      this.btnName="Add";    
   }
@@ -81,7 +73,7 @@ public visibility: boolean = false;
     .subscribe(res=>{
       this.ngOnInit();
         $('#myModal').modal('hide');
-        bootbox.alert('<label>Created Succesfully</label>');   
+        bootbox.alert('Created Succesfully');   
      })
   }
 
@@ -104,14 +96,14 @@ public visibility: boolean = false;
       console.log(data);
       this.hostApi.createHost(data)
      .subscribe(res=>{
-         bootbox.alert('<label>Created Succesfully</label>');   
+         bootbox.alert('Created Succesfully');   
          this.ngOnInit();
       })
     }
     else{
       this.hostApi.createHost(data)
        .subscribe(res=>{
-        bootbox.alert('<label>Updated Succesfully</label>');   
+        bootbox.alert('Updated Succesfully');   
         this.ngOnInit();
        })
     }
@@ -131,11 +123,11 @@ public visibility: boolean = false;
       console.log(this.evironmentList);
     }
     else{
-    bootbox.confirm("<label>Are you sure, you want to delete?</label>",(result)=>{
+    bootbox.confirm("Are you sure, you want to delete?",(result)=>{
            if(result==true){          
             this.hostApi.deleteHostById(id)
             .subscribe(res=>{
-              bootbox.alert('<label>Deleted Succesfully</label>'); 
+              bootbox.alert('Deleted Succesfully'); 
               this.evironmentList[index].hostDetailBeans.splice(index1,1); 
       $('#hostDetailsTable'+name).DataTable().destroy();   
       setTimeout(function(){
@@ -150,64 +142,4 @@ public visibility: boolean = false;
       });  
     }  
   }
-
-
-  // editHost(id){
-  //   this.btnName="Update";
-  //   this.hostApi.getHostById(id)
-  //   .subscribe(res=>{
-  //     this.edit=res[0];
-  //   })
-  // }
-
-  // updateHost(type){
-  //   console.log(this.edit);
-  //   if(type=="Add"){
-  //     this.hostApi.createHost(this.edit)
-  //     .subscribe(res=>{
-  //       this.ngOnInit();
-  //       bootbox.alert('<label>Created Succesfully</label>');   
-  //     })
-  //   }
-  //   else{
-  //     this.hostApi.updateHost(this.edit)
-  //     .subscribe(res=>{
-  //       this.ngOnInit();
-  //     })
-  //   }
-  //   $('#modalClose').click();
-  //   this.edit={};
-  // }
-
-  // deleteHost(id:any){
-  //   var hosts=this.hostList;
-  //   bootbox.confirm("<label>Are you sure, you want to delete?</label>",(result)=>{
-  //     if(result==true){          
-  //       this.deleteFunction(hosts,id);
-  //     }   
-  //   });    
-  // }
-
-  // deleteFunction(hosts,id){
-  //   this.hostApi.deleteHostById(id)
-  //         .subscribe(res=>{
-  //     if(res.n==1){
-  //       for(var i=0;i<hosts.length;i++){
-  //         if(hosts[i]._id==id){            
-  //           hosts.splice(i,1); 
-  //           $('#hostDetailsTable').DataTable().destroy();
-  //           setTimeout(function(){
-  //             $('#hostDetailsTable').DataTable({
-  //               responsive: true
-  //             });              
-  //             }, 50);               
-  //           bootbox.alert("<label>Deleted Successfully</label>");
-  //         }
-  //       }
-  //     }
-  //   })
-  // }
-  
-
-
 }

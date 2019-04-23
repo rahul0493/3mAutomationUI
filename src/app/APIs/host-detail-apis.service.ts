@@ -22,7 +22,7 @@ export class HostDetailAPIsService {
   }
   
   createEnvironment(hostDetail): Observable<any>{
-    return this.http.post(environment.apiUrl+'/host/save',hostDetail,{headers:this.headers})
+    return this.http.post(environment.apiUrl+'/host/save',hostDetail,{headers:this.headers,responseType: 'text' })
     .map(res=>res);
   }
   
@@ -30,12 +30,12 @@ export class HostDetailAPIsService {
     if(hostDetail.id==null){
       hostDetail.id=0;
     }
-    return this.http.put(environment.apiUrl+'/host/updateHostDetailsbyId/'+hostDetail.id,hostDetail,{headers:this.headers})
+    return this.http.put(environment.apiUrl+'/host/updateHostDetailsbyId/'+hostDetail.id,hostDetail,{headers:this.headers,responseType: 'text'})
     .map(res=>res);
   }
 
   deleteHostById(id): Observable<any>{ 
-      return this.http.delete(environment.apiUrl+'/host/deleteHostDetailsbyId/'+id,{headers:this.headers})
+      return this.http.delete(environment.apiUrl+'/host/deleteHostDetailsbyId/'+id,{headers:this.headers,responseType: 'text'})
       .map(res=>res);  
   }
 

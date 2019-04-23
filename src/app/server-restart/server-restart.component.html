@@ -1,46 +1,41 @@
 <div class="component">
     <div class="col-lg-3">
-      <h2>{{title}}</h2>
-      <select [(ngModel)]="environment" class="form-control" (change)="selectEnv()">
-        <option value="pleaseSelect" disabled>Select Environment</option>   
-        <option *ngFor="let env of environmentOptions" value="{{env.id}},{{env.environment}}">{{env.environment}}</option>
-      </select>
+       <h2>{{title}}</h2>
+       <select [(ngModel)]="environment" class="form-control" (change)="selectEnv()">
+       <option value="pleaseSelect" disabled>Select Environment</option>
+       <option *ngFor="let env of environmentOptions" value="{{env.id}},{{env.environment}}">{{env.environment}}</option>
+       </select>
     </div>
-    
-    
-    <div class="row col-lg-12" *ngIf="serverRestartDetailsDiv"> 
-
-        <div class="col-lg-12">
-            <!-- <form (submit)="saveNewPass()"> -->
-            <div class="row">
-            <div class="col-lg-7">
+    <div class="row col-lg-12" *ngIf="serverRestartDetailsDiv">
+       <div class="col-lg-12">
+          <!-- <form (submit)="saveNewPass()"> -->
+          <div class="row">
+             <div class="col-lg-7">
                 <h2 style="float:left"><label>Environment :</label> {{environmentName}}</h2>
-            </div>     
+             </div>
           </div>
-            <table class="table  table-hover " id="envTable">
-              <thead>
+          <table class="table  table-hover " id="envTable">
+             <thead>
                 <tr>
-                  <th>S.No</th>
-                  <th>Node</th>
-                  <th>Actions</th>
-                               
+                   <th>S.No</th>
+                   <th>Node</th>
+                   <th>Actions</th>
                 </tr>
-              </thead>
-                <tbody>
-                  <!-- <tr *ngFor="let node of environmentList.newPasswordBean;index as i">  -->
-                    <tr>
-                    <td>1</td>
-                    <td>Node 1</td>
-                    <td>                      
+             </thead>
+             <tbody>
+                <!-- <tr *ngFor="let node of environmentList.newPasswordBean;index as i">  -->
+                <tr>
+                   <td>1</td>
+                   <td>Node 1</td>
+                   <td>                      
                       <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-stop-circle"></i> Soft Stop</button>&nbsp;&nbsp;
                       <button type="button" class="btn btn-danger btn-sm" disabled><i class="fa fa-hand-stop-o"></i> Hard Stop</button>&nbsp;&nbsp;
                       <button type="button" class="btn btn-success btn-sm" disabled><i class="fa fa-play-circle"></i> Start</button>&nbsp;&nbsp;
                       <button type="button" class="btn btn-primary btn-sm" disabled><i class="fa fa-refresh"></i> Restart</button>
-                    </td>
-                    
-                  </tr>
-                </tbody>       
-              </table>             
-      </div>
-      </div>
-      </div>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </div>
+    </div>
+ </div>
