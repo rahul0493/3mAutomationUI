@@ -19,8 +19,7 @@ export class ResetPassAPIsService {
     .map(res=>res);
   }
 
-  updateConn(updateDetail): Observable<any>{
-   
+  updateConn(updateDetail): Observable<any>{   
     return this.http.put(environment.apiUrl+'/ResetPassword/updateConnectionDetailsById/'+updateDetail.id,updateDetail,{headers:this.headers,responseType: 'text'})
     .map(res=>res);
   }

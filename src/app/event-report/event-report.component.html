@@ -1,0 +1,109 @@
+<div class="component">
+    <div class="col-12">
+       <!-- <div class="col-md-offset-2 col-md-8 text-center ">
+          <div class="">
+             <div class="col-lg-7">
+                <h2 style="float:left">Event Report</h2>
+             </div>
+             <div class="col-lg-5">
+                <button  class="btn btn-success btn-sm" style="float:right" (click)="addEvent()" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"> <span> New Event</span></i></button>
+             </div>
+          </div>
+          </div> -->
+
+          <div class="col-md-offset-2 col-md-8">
+              <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Events</h3>
+                    
+                    <div class=" pull-right">
+                        <button  class="btn btn-success btn-sm" style="float:right" (click)="addEvent()" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"> <span> New Event</span></i></button>
+                      
+                    </div>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <ul class="products-list product-list-in-box">                  
+                      <!-- /.item -->
+                      <li class="item" *ngFor="let x of allEventArr;index as i">
+                        <!-- <div>
+                        <span>{{i+1}}</span>
+                      </div> -->
+                          <div class="product-img">
+                              <img src="https://media2.giphy.com/media/3oKGzpLBTPjUwPmJGw/200w.webp?cid=790b76115cc0276b6b4c4d6773525220" alt="Product Image">
+                          </div> 
+                        <div class="product-info">
+                          <a href="javascript:void(0)" class="product-title">{{x.title}}
+                            <span class="label label-info">New</span>                            
+                            <span class="pull-right">
+                                <a class="deleteBtn fa fa-trash fa-lg"  (click)="deleteEvent(x.id)" ></a>
+                            </span>
+                            <span class="pull-right">
+                                <a class="editBtn fa fa-pencil fa-lg"  (click)="editEvent(x)" ></a>
+                            </span>
+                          </a>
+                          <span class="product-description">
+                                {{x.description}}
+                              </span>
+                              <span class="product-description">
+                                  {{x.date|date:'fullDate'}}
+                                </span>
+                        </div>                        
+                      </li>                   
+                    </ul>
+                  </div>               
+                </div>                                    
+            </div>
+  
+          </div>
+
+          <div class="modal" id="myModal" >
+              <div class="modal-dialog modal-md">
+                 <div class="modal-content">
+                    <form (submit)="createEvent(event)">
+                       <!-- Modal Header -->
+                       <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Event Detail</h4>
+                       </div>
+                       <!-- Modal body -->
+                       <div class="modal-body">
+                          <div class="">
+                             <div class="form-group">
+                                <label class="col-form-label">Event Title</label>
+                                <div class="">
+                                   <input type="text" [(ngModel)]="event.title" name="title"  #title="ngModel"  class="form-control" required>                      
+                                </div>
+                             </div>
+                             <div class="form-group">
+                                <label class="col-form-label">Event Date</label>
+                                <div class="">
+                                   <input type="date" [(ngModel)]="event.date" name="date"  #date="ngModel"  class="form-control" required>                      
+                                </div>
+                             </div>
+                             <div class="form-group">
+                                <label class="col-form-label">Event Descriptin</label>
+                                <div class="">
+                                   <textarea [(ngModel)]="event.description" name="description"  #description="ngModel"  class="form-control" required ></textarea>
+                                </div>
+                             </div>
+                             <!-- <div class="form-group">
+                                <label class="col-form-label">Event Image</label>
+                                <div class="">
+                                    <input type="file" [(ngModel)]="event.image" name="image"  #image="ngModel">
+                                </div>
+                             </div> -->
+                             
+                          </div>
+                       </div>
+                       <!-- Modal footer -->
+                       <div class="modal-footer">
+                          <input type="submit" value={{btnName}} class="btn btn-sm btn-success">&nbsp;&nbsp;
+                          <button type="button" class="btn btn-sm btn-danger" id="modalClose" data-dismiss="modal">Close</button>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+           </div>
+          </div>
+          

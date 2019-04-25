@@ -133,7 +133,7 @@
                          </li>
                       </ul>
                    </li>
-                   <li class="treeview" *ngIf="isAdmin">
+                   <li class="treeview" *ngIf="isSuperUser">
                       <a href="#">
                       <i class="fa fa-database"></i>
                       <span>DB Password Change</span>
@@ -142,12 +142,12 @@
                       </span>
                       </a>
                       <ul class="treeview-menu">
-                         <li><a routerLink="dbConn"><i class="fa fa-plug"></i> DB Connection</a></li>
-                         <li><a routerLink="resetPass"><i class="fa fa-key"></i> Reset DB Password</a></li>
+                         <li><a routerLink="dbConn/superUser"><i class="fa fa-plug"></i> DB Connection</a></li>
+                         <li><a routerLink="resetPass/superUser"><i class="fa fa-key"></i> Reset DB Password</a></li>
                       </ul>
                    </li>
-                   <li *ngIf="isAdmin"><a routerLink="hostDetails"><i class="fa fa-h-square"></i>App Host Details</a></li>
-                   <li *ngIf="isAdmin"><a routerLink="serverRestart"><i class="fa fa-refresh"></i> App Restart </a></li>
+                   <li *ngIf="isSuperUser"><a routerLink="hostDetails/superUser"><i class="fa fa-h-square"></i>App Host Details</a></li>
+                   <li *ngIf="isSuperUser"><a routerLink="serverRestart/superUser"><i class="fa fa-refresh"></i> App Restart </a></li>
                 </ul>
              </li>
              <li>
@@ -181,13 +181,13 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                   <li><a routerLink="commingSoon"><i class="fa fa-calendar"></i> Event Report</a></li>
+                   <li><a routerLink="eventReport"><i class="fa fa-calendar"></i> Event Report</a></li>
                    <li><a routerLink="commingSoon"><i class="fa fa-file"></i> Incident Report</a></li>
                    <li><a routerLink="commingSoon"><i class="fa fa-users"></i> Available Shift Resources</a></li>
                 </ul>
              </li>
              <li class="treeview" *ngIf="isAdmin">
-                <a routerLink="roleAccess">
+                <a routerLink="roleAccess/admin">
                 <i class="fa fa-universal-access"></i> <span>User Role</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>

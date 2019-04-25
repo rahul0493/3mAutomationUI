@@ -1,6 +1,7 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import {formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { HomeAPIsService } from '../APIs/home-apis.service';
 
 
 declare var jquery:any;
@@ -19,7 +20,12 @@ export class HomeComponent implements OnInit {
   ngAfterViewInit(){    
   }
 date:String;
-  constructor(private router:Router) { }
+upcomingEvent:any;
+todayEvent:any;
+noEventToday:String;
+noUpcomingEvent:String;
+
+  constructor(private router:Router,private homeServ:HomeAPIsService) { }
   incident=[{
     "id":"daily",
     "PieData": [
@@ -187,8 +193,19 @@ date:String;
     // You can switch between pie and douhnut using the method below.
     pieChart.Pie(PieData, pieOptions);
   }
-  ngOnInit() {   
-    //$.getScript('../assets/js/adminlte.min.js');    
+  ngOnInit() {
+      this.homeServ.getUpcomingEvent()
+      .subscribe(res=>{
+        if(res.todayEvent.length==0){
+          this.noEventToday="Today No Event !!";
+        }
+        else if(res.upcomingEvent.length==0){
+        this.noUpcomingEvent="Upcoming No Event !!";
+        }
+        this.todayEvent=res.todayEvent;
+        this.upcomingEvent=res.upcomingEvent;
+      })
+          
     this.date=formatDate(new Date(), 'dd MMM, yyyy.', 'en-US', '+0530');
     setTimeout(()=>{
      for(var i=0;i<this.incident.length;i++){

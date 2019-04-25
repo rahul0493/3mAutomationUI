@@ -79,6 +79,7 @@
   <div class="col-lg-4" *ngFor="let x of incident">
       <div class="box box-primary">
           <div class="box-header with-border">
+            
             <h3 class="box-title">{{x.id}} Incidents</h3>
 
             <div class="box-tools pull-right">
@@ -165,95 +166,6 @@
                           </tr>
                   </tbody>
                 </table>
-
-
-
-              <!-- <div class="col-lg-3">
-                <h3>First Shift</h3>
-              <ul class="users-list clearfix">
-                <li>
-                  <img src="../assets/img/user1-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Alexander Pierce</a>
-                  <span class="users-list-date">Today</span>
-                </li>
-                <li>
-                  <img src="../assets/img/user8-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Norman</a>
-                  <span class="users-list-date">Yesterday</span>
-                </li>
-                <li>
-                    <img src="../assets/img/user2-160x160.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Alexander</a>
-                    <span class="users-list-date">13 Jan</span>
-                  </li>
-                  
-                  <li>
-                    <img src="../assets/img/user5-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Sarah</a>
-                    <span class="users-list-date">14 Jan</span>
-                  </li>
-                  
-                      <li>
-                          <img src="../assets/img/user7-128x128.jpg" alt="User Image">
-                          <a class="users-list-name" href="#">Jane</a>
-                          <span class="users-list-date">12 Jan</span>
-                        </li>
-                        <li>
-                          <img src="../assets/img/user6-128x128.jpg" alt="User Image">
-                          <a class="users-list-name" href="#">John</a>
-                          <span class="users-list-date">12 Jan</span>
-                        </li> 
-              </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h3>Second Shift</h3>
-                  <ul class="users-list clearfix">
-                <li>
-                  <img src="../assets/img/user7-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Jane</a>
-                  <span class="users-list-date">12 Jan</span>
-                </li>
-                <li>
-                  <img src="../assets/img/user6-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">John</a>
-                  <span class="users-list-date">12 Jan</span>
-                </li>
-              </ul>
-              </div>
-           
-              <div class="col-lg-3">
-                  <h3>Night Shift</h3>
-                  <ul class="users-list clearfix">
-                <li>
-                  <img src="../assets/img/user2-160x160.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Alexander</a>
-                  <span class="users-list-date">13 Jan</span>
-                </li>
-                
-                <li>
-                  <img src="../assets/img/user5-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Sarah</a>
-                  <span class="users-list-date">14 Jan</span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3">
-                <h3>General Shift</h3>
-                <ul class="users-list clearfix">
-                <li>
-                  <img src="../assets/img/user4-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Nora</a>
-                  <span class="users-list-date">15 Jan</span>
-                </li>
-              
-                <li>
-                  <img src="../assets/img/user3-128x128.jpg" alt="User Image">
-                  <a class="users-list-name" href="#">Nadia</a>
-                  <span class="users-list-date">15 Jan</span>
-                </li>
-              </ul>   
-              </div>  -->
-             
             </div>           
           </div>          
         </div>
@@ -261,50 +173,60 @@
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Upcoming Events</h3>
-    
-                  <div class="box-tools pull-right">
-                    <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button> -->
-                    
+                    <h3 class="box-title">Today Event</h3>
+                    <div class="box-tools pull-right">                   
+                    </div>
+                  </div>
+                  <div class="box-body">
+                    <span>
+                    {{noEventToday}}
+                  </span>
+                      <ul class="products-list product-list-in-box">
+                        <li class="item" *ngFor="let x of todayEvent">
+                            <div class="product-img">
+                                <img src="https://media2.giphy.com/media/3oKGzpLBTPjUwPmJGw/200w.webp?cid=790b76115cc0276b6b4c4d6773525220" alt="Product Image">
+                            </div> 
+                          <div class="product-info">
+                            <a href="javascript:void(0)" class="product-title">{{x.title}}
+                              <span class="label label-warning pull-right">New</span> 
+                            </a>
+                            <span class="product-description">
+                                  {{x.description}}
+                                </span>
+                                <span class="product-description">
+                                    <!-- On Monday, 25th Feb, 2019. -->
+                                    {{x.date|date}}
+                                  </span>
+                          </div>
+                        </li>                                          
+                      </ul>
+                    </div> 
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Event</h3>
+                  <div class="box-tools pull-right">                   
                   </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                  {{noUpcomingEvent}}
                   <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="../dashboard3M/assets/img/default-50x50.gif" alt="Product Image">
-                      </div>
+                    <li class="item" *ngFor="let x of upcomingEvent">
+                        <div class="product-img">
+                            <img src="https://media2.giphy.com/media/3oKGzpLBTPjUwPmJGw/200w.webp?cid=790b76115cc0276b6b4c4d6773525220" alt="Product Image">
+                        </div> 
                       <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">SAP
+                        <a href="javascript:void(0)" class="product-title">{{x.title}}
                           <span class="label label-warning pull-right">New</span> 
                         </a>
                         <span class="product-description">
-                              SAP go live
+                              {{x.description}}
                             </span>
                             <span class="product-description">
-                                On Monday, 25th Feb, 2019.
+                                <!-- On Monday, 25th Feb, 2019. -->
+                                {{x.date|date}}
                               </span>
                       </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="../dashboard3M/assets/img/default-50x50.gif" alt="Product Image">
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">3M
-                          <span class="label label-info pull-right">New</span>
-                        </a>
-                        <span class="product-description">
-                              3M Maintainance
-                            </span>
-                            <span class="product-description">
-                                On Monday, 28th Feb, 2019.
-                              </span>
-                      </div>
-                    </li>                   
+                    </li>                                          
                   </ul>
                 </div>               
               </div>                                    

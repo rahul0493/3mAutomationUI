@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinnerInterceptorService } from './auth/spinner-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,8 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 import {SpinnerService} from './auth/spinner.service';
 import { ServerStatusComponent } from './server-status/server-status.component';
 import { AdminRoleComponent } from './admin-role/admin-role.component';
+import { EventReportComponent } from './event-report/event-report.component';
+import { ForbiddenErrorComponent } from './forbidden-error/forbidden-error.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,16 @@ import { AdminRoleComponent } from './admin-role/admin-role.component';
     ServerRestartComponent,
     CommingSoonComponent,
     ServerStatusComponent,
-    AdminRoleComponent  
+    AdminRoleComponent,
+    EventReportComponent,
+    ForbiddenErrorComponent  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     HttpClientModule,
+    NgbModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
     

@@ -18,6 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private router:Router,private resetPassApi:ResetPassAPIsService) { }
 
   ngOnInit() {
+    console.log('ghj');
     this.btnName="Add";
      this.resetPassApi.getAllConn()
      .subscribe(res=>{  
@@ -25,20 +26,26 @@ export class ResetPasswordComponent implements OnInit {
     $('#connDetailsTable').DataTable().destroy();
       setTimeout(function(){
         $('#connDetailsTable').DataTable({
-          responsive: true
+          responsive: true,
+          stateSave: true
         });   
         }, 50);  
   });
 }
-resetPass(id,data){
+resetPass(id,data,arr){
   if(data.newPassword==data.confirmPassword){
    this.resetPassApi.updateConn(data)
    .subscribe(res=>{  
     
      this.resetPassApi.resetPassword(data)
      .subscribe(res=>{
+      //var resAdmin = arr.find(x => x.id === id);
+      // arr.splice(arr.indexOf(id), 1);
+      // console.log(arr);
+      // arr[id]=data;
+      //resAdmin.currentPassword=data.currentPassword;
       bootbox.alert("Password Resetted Successfully");
-       this.ngOnInit();
+      this.ngOnInit();
      })
 });
 }else{

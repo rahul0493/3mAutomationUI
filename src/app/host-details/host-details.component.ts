@@ -97,14 +97,16 @@ public visibility: boolean = false;
       this.hostApi.createHost(data)
      .subscribe(res=>{
          bootbox.alert('Created Succesfully');   
-         this.ngOnInit();
+         //this.ngOnInit();
+         $('tr td input').attr('disabled',true);
       })
     }
     else{
       this.hostApi.createHost(data)
        .subscribe(res=>{
         bootbox.alert('Updated Succesfully');   
-        this.ngOnInit();
+        //this.ngOnInit();
+        $('tr td input').attr('disabled',true);
        })
     }
     console.log(data);

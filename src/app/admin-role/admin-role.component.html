@@ -9,6 +9,7 @@
           <th>Emp Name</th>
           <th>Emp Code</th>
           <th>Admin</th>
+          <th>Super User</th>
           <th>NGG</th>
           <th>DOM</th>
           <th>EAI</th>
@@ -22,6 +23,7 @@
             <td>{{x.empName}}</td>
             <td>{{x.empCode}}</td>
             <td><input type="checkbox" class="roleCheck" disabled [(ngModel)]="x.isAdmin"></td>
+            <td><input type="checkbox" class="roleCheck" disabled [(ngModel)]="x.isSuperUser"></td>
             <td><input type="checkbox" class="roleCheck" disabled [(ngModel)]="x.isNggUser"></td>
             <td><input type="checkbox" class="roleCheck" disabled [(ngModel)]="x.isDOMUser"></td>
             <td><input type="checkbox" class="roleCheck" disabled [(ngModel)]="x.isEAIUser"></td>
