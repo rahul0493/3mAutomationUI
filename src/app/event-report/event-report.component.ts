@@ -12,13 +12,21 @@ export class EventReportComponent implements OnInit {
 btnName:String;
 event:any;
 allEventArr:any;
+noEvent:Boolean;
   constructor(private homeServ:HomeAPIsService) { }
 
   ngOnInit() {
     this.event={};
     this.homeServ.getAllEvent()
     .subscribe(res=>{
+      if(res.length!=0){
       this.allEventArr=res;
+      this.noEvent=false;
+      }
+      else{
+        this.allEventArr=res;
+        this.noEvent=true;
+      }
     });
   }
 

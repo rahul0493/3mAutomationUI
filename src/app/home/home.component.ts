@@ -24,6 +24,8 @@ upcomingEvent:any;
 todayEvent:any;
 noEventToday:String;
 noUpcomingEvent:String;
+dailyShiftArr:any;
+trackList:any;
 
   constructor(private router:Router,private homeServ:HomeAPIsService) { }
   incident=[{
@@ -199,12 +201,21 @@ noUpcomingEvent:String;
         if(res.todayEvent.length==0){
           this.noEventToday="Today No Event !!";
         }
-        else if(res.upcomingEvent.length==0){
+        if(res.upcomingEvent.length==0){
         this.noUpcomingEvent="Upcoming No Event !!";
         }
         this.todayEvent=res.todayEvent;
         this.upcomingEvent=res.upcomingEvent;
-      })
+      });
+
+    this.homeServ.getDailyShiftResource()
+    .subscribe((res)=>{
+      console.log(res);
+      this.sortAsscending(res);      
+      this.dailyShiftArr=res;
+      //this.sortAsscending(res[0].trackList); 
+      this.trackList=res[0].trackList;
+    })
           
     this.date=formatDate(new Date(), 'dd MMM, yyyy.', 'en-US', '+0530');
     setTimeout(()=>{
@@ -214,4 +225,14 @@ noUpcomingEvent:String;
     },100);
   }
 
+  sortAsscending(data){
+    data.sort(function(a, b){
+      var nameA=a.shiftName.toLowerCase(), nameB=b.shiftName.toLowerCase()
+      if (nameA < nameB) //sort string ascending
+          return -1 
+      if (nameA > nameB)
+          return 1
+      return 0 //default return value (no sorting)
+  })
+  }
 }

@@ -6,6 +6,8 @@
 
 .component{
   padding: 15px;
+  position: relative;
+  /* top: 45px; */
 }
 .form-group label{
     font-weight:500;

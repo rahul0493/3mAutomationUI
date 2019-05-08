@@ -23,6 +23,7 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
+                     <span *ngIf="noEvent">No Event !!</span>
                     <ul class="products-list product-list-in-box">                  
                       <!-- /.item -->
                       <li class="item" *ngFor="let x of allEventArr;index as i">

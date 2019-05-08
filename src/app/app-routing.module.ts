@@ -14,6 +14,7 @@ import { ServerStatusComponent } from './server-status/server-status.component';
 import { AdminRoleComponent } from './admin-role/admin-role.component';
 import { EventReportComponent } from './event-report/event-report.component';
 import { ForbiddenErrorComponent } from './forbidden-error/forbidden-error.component';
+import { ShiftResourceComponent } from './shift-resource/shift-resource.component';
 
 const routes: Routes = [
   {"path":'',component:HomeComponent,canActivate:[AuthGaurdService]},
@@ -28,7 +29,8 @@ const routes: Routes = [
   {'path':'serverRestart/:superUser',component:ServerRestartComponent,canActivate:[AuthGaurdService]},
   {'path':'serverStatus',component:ServerStatusComponent,canActivate:[AuthGaurdService]},
   {'path':'roleAccess/:admin',component:AdminRoleComponent,canActivate:[AuthGaurdService]},
-  {'path':'eventReport',component:EventReportComponent,canActivate:[AuthGaurdService]}
+  {'path':'eventReport/:superUser',component:EventReportComponent,canActivate:[AuthGaurdService]},
+  {'path':'shiftResource',component:ShiftResourceComponent,canActivate:[AuthGaurdService]}
 ];
 
 @NgModule({

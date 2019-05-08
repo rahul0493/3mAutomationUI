@@ -29,6 +29,7 @@
               "src/bower_components/Ionicons/css/ionicons.min.css", 
               "src/assets/css/AdminLTE.min.css",
               "src/assets/css/skins/_all-skins.min.css",
+              "src/assets/css/dateTimePicker.css",
               "src/styles.css"                         
             ],
             "scripts": [
@@ -38,6 +39,7 @@
               "src/assets/js/adminlte.min.js",                
               "src/bower_components/chart.js/Chart.js",                                                
               "./node_modules/bootbox/bootbox.js", 
+              "src/assets/js/dateTimePicker.js",  
               "./node_modules/datatables/media/js/jquery.dataTables.min.js",               
               "./node_modules/datatables-buttons/js/dataTables.buttons.js"                                         
             ]

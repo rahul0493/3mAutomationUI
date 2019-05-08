@@ -144,25 +144,41 @@
                   <thead>
                     <tr>
                       <th>Shift</th>
-                      <th>Employees</th>
+                      <th *ngFor="let y of trackList">{{y.trackname}}</th>
                     </tr>                    
                   </thead>
                   <tbody>
-                    <tr>
+                    <!-- <tr>
                       <td><b>1S</b> (First Shift)</td>
-                      <td>shoban, Rahul, Chaitu</td>
+                      <td>shoban, Rahul</td>
+                      <td>Aditya, Rajeev</td>
+                      <td>Pradeep, Nikhil</td>
+                      <td>Chaithu,Veeresh</td>
                     </tr>
                     <tr>
                         <td><b>2S</b> (Second Shift)</td>
                         <td>Aditya, Rajeev</td>
+                        <td>Chaithu,Veeresh</td>
+                        <td>shoban, Rahul,Ramcharan, Naresh</td>
+                        <td>Pradeep, Nikhil</td>
                       </tr>
                       <tr>
                           <td><b>3S</b> (Night Shift)</td>
                           <td>Ramcharan, Naresh</td>
+                          <td>Chaithu,Veeresh</td>
+                          <td>Aditya, Rajeev</td>
+                          <td>Pradeep, Nikhil</td>
                         </tr>
                         <tr>
                             <td><b>GS</b> (General Shift)</td>
                             <td>Pradeep, Nikhil</td>
+                            <td>shoban, Rahul</td>
+                            <td>Chaithu,Veeresh</td>
+                            <td>Aditya, Rajeev</td>
+                          </tr> -->
+                          <tr *ngFor="let x of dailyShiftArr">
+                            <td>{{x.shiftName}}</td>
+                            <td *ngFor="let m of x.trackList">{{m.employeeNames}}</td>
                           </tr>
                   </tbody>
                 </table>

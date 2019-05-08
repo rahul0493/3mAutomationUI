@@ -1,0 +1,49 @@
+.shiftDetails span{
+    font-size: 12px;
+    padding:2px 5px;
+    border-radius:2px;
+    /* color:white; */
+}
+.shiftDetails label{
+    margin:4px;
+}
+
+.shiftDetails .FS,.shiftDetails .CFS{
+    background-color:#4b87f5;
+}
+
+.shiftDetails .SS,.shiftDetails .CSS{
+    background-color:#deb20b;
+}
+.shiftDetails .NS,.shiftDetails .CNS{
+    background-color:#777777;
+}
+
+.shiftDetails .C,.shiftDetails .L,.shiftDetails .PH{
+    background-color:red;
+}
+
+.shiftDetails .W{
+    background: yellow;
+}
+
+.shiftDetails .RS{
+    background-color:#07ce07;
+}
+
+table th,table td{
+    padding: 3px;
+    text-align: center;
+    border: 1px solid;
+}
+
+.shiftDetails  ul {
+    list-style: none;
+}
+.shiftsLabel{
+    font-weight: bold;
+}
+
+table td{
+    background: #fdfdfd
+}

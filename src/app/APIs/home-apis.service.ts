@@ -22,6 +22,18 @@ export class HomeAPIsService {
     .map(res=>res);
   }
 
+  getMonthlyShiftResource(month,year): Observable<any>{
+     return this.http.get(environment.apiUrl+'/EventHandller/getShiftPlanMonthlyData',{headers:this.headers,params:{monthId:month,year:year}})
+    //return this.http.get('../assets/json/shiftPlan.json')
+    .map(res=>res);
+  }
+
+  getDailyShiftResource(): Observable<any>{
+    return this.http.get(environment.apiUrl+'/EventHandller/getShiftPlanDayData',{headers:this.headers})
+   //return this.http.get('../assets/json/shiftPlan.json')
+   .map(res=>res);
+ }
+
   getAllEvent(): Observable<any>{
     return this.http.get(environment.apiUrl+'/EventHandller/getAllEvent',{headers:this.headers})
     .map(res=>res);

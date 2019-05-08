@@ -22,6 +22,7 @@ import { ServerStatusComponent } from './server-status/server-status.component';
 import { AdminRoleComponent } from './admin-role/admin-role.component';
 import { EventReportComponent } from './event-report/event-report.component';
 import { ForbiddenErrorComponent } from './forbidden-error/forbidden-error.component';
+import { ShiftResourceComponent } from './shift-resource/shift-resource.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ForbiddenErrorComponent } from './forbidden-error/forbidden-error.compo
     ServerStatusComponent,
     AdminRoleComponent,
     EventReportComponent,
-    ForbiddenErrorComponent  
+    ForbiddenErrorComponent,
+    ShiftResourceComponent  
   ],
   imports: [
     BrowserModule,

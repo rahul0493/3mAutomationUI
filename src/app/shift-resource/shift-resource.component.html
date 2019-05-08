@@ -1,0 +1,94 @@
+<div class="component">
+  
+  <div class="col-lg-9">
+    <h2>Shift Resources</h2>
+  </div>
+    <div class="col-lg-3">                 
+        <!-- <select [(ngModel)]="selectedMonth" class="form-control" (change)="selectEnv()">
+        <option value="pleaseSelect" disabled>Select Month</option>
+        <option *ngFor="let env of environmentOptions" value="{{env.id}},{{env.environment}}">{{env.environment}}</option>
+        </select> -->
+
+        <input type="text" class="form-control" id="monthPicker" placeholder="Select Month" >
+     </div>
+     <div class="col-md-12" [hidden]="shiftAvail">
+     <div class="col-md-3 shiftDetails">
+       <ul>
+         <li>
+        <span class="FS">1S</span><label>First Shift</label>
+      </li>
+      <li>
+        <span class="SS">2S</span><label>Second Shift</label>
+      </li>
+      <li>
+        <span class="NS">3S</span><label>Night Shift</label>
+      </li>
+      </ul>
+     </div>
+      <div class="col-md-3 shiftDetails">
+          <ul>
+      <li>
+        <span class="CFS">C1S</span><label>Cross First Shift</label>
+      </li>
+      <li>
+        <span class="CSS">C2S</span><label>Cross Second Shift</label>
+      </li>
+      <li>
+        <span class="CNS">C3S</span><label>Cross Night Shift</label>
+      </li>
+       </ul>
+      </div>
+       <div class="col-md-3 shiftDetails">
+         <ul>
+      <li>
+          <span class="L">L</span><label>Leave</label>
+        
+      </li>
+      <li>
+        <span class="W">W</span><label>Week Off</label>
+      </li>
+      <li>
+        <span class="C">C</span><label>Comp Off</label>
+      </li>
+         </ul>
+       </div>
+       <div class="col-md-3 shiftDetails">
+          <ul>
+      <li>
+          <span class="RS">RS</span><label>Regular Shift</label>
+      </li>
+      <li>
+        <span class="PH">PH</span><label>Public Holiday</label>
+        </li>
+      </ul>
+      </div>
+    </div>
+     <div class="col-lg-12" [hidden]="shiftAvail">
+       <table class="table table-bordered table-responsive">
+         <thead>
+           <tr>
+              <th colspan="3">{{month}}</th>             
+              
+             
+             <th *ngFor="let x of daysArray">{{x.day}}</th>
+             </tr>         
+             <tr>
+                <th>Track</th>
+                <th>Employee</th>
+                <th>Mobile</th>
+               <th *ngFor="let x of daysArray">{{x.date}}</th>
+             </tr>  
+         </thead>
+         <tbody *ngFor="let x of shiftArray">
+           <tr *ngFor="let y of x.shiftPlanBean">
+             <td>{{x.trackName}}</td>
+             <td>{{y.employeeName}}</td>
+             <td>{{y.mobileNumber}}</td>
+             <td *ngFor="let z of y.employeeShift" class="shiftsLabel" [style.background-color]="z.colour">{{z.shiftName}}</td>
+             <!-- <td><table ><tr *ngFor="let y of x.shiftPlanBean">{{y.employeeName}}</tr></table></td>
+             <td><table ><tr *ngFor="let y of x.shiftPlanBean">{{y.mobileNumber}}</tr></table></td> -->
+           </tr>
+         </tbody>
+       </table>
+     </div>
+</div>

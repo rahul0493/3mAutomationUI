@@ -7,7 +7,7 @@
           <img src="http://www.loadbalancer.org/public/images/loader.gif" class="img-responsive" />
        </div>
     </div>
-    <header class="main-header">
+    <header class="main-header" >
        <!-- Logo -->
        <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -181,9 +181,9 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                   <li><a routerLink="eventReport"><i class="fa fa-calendar"></i> Event Report</a></li>
+                   <li *ngIf="isSuperUser"><a routerLink="eventReport/superUser"><i class="fa fa-calendar"></i> Event Report</a></li>
                    <li><a routerLink="commingSoon"><i class="fa fa-file"></i> Incident Report</a></li>
-                   <li><a routerLink="commingSoon"><i class="fa fa-users"></i> Available Shift Resources</a></li>
+                   <li><a routerLink="shiftResource"><i class="fa fa-users"></i> Available Shift Resources</a></li>
                 </ul>
              </li>
              <li class="treeview" *ngIf="isAdmin">
